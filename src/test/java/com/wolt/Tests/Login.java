@@ -24,7 +24,8 @@ public class Login {
         $(".ConsentsBanner__Root-sc-194d5oz-0").$(".Button__Root-sc-a3fg5q-2").click();
         $(".Button-module__button___WpJP1").click();
         $(".CitySelection-module__container___xXS1B").scrollTo().shouldHave(Condition.text("Limassol"));
-        $(".List-module__listOfCities____EgRr").$(".ListItem-module__container___ji0Cg", 1).click();
+        $(".List-module__listOfCities____EgRr").$(".ListItem-module__container___ji0Cg", 2).click();
+        $(".ControlledDeliveryLocationButton__LocationName-sc-124bug2-2").shouldHave(Condition.text("Limassol"));
     }
 
 }
