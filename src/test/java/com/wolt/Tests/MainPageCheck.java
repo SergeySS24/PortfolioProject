@@ -40,10 +40,35 @@ public class MainPageCheck extends Base {
     }
 
     @Test
+    void pictureCheck() {
+
+
+               // .shouldHave(Condition.attribute("img", "https://cdn.wolt.com/frontpage-assets/hero-images/0_Sunday.jpg"));
+
+                        //.find(Condition.attribute("img src", "https://cdn.wolt.com/frontpage-assets/hero-images/0_Sunday.jpg"));
+
+      $(".CountryFrontHeroBanner-module__root___txolf").$("img")
+              .shouldHave(Condition.image);
+
+             // .shouldHave(Condition.image);
+
+                //.$(".img src")
+               // .shouldHave(Condition.attributeMatching("img src", "https://cdn.wolt.com/frontpage-assets/hero-images/0_Sunday.jpg"));
+
+
+       // $("image")
+              //  .shouldBe(Condition.image"https://cdn.wolt.com/frontpage-assets/hero-images/0_Sunday.jpg");
+    }
+
+
+
+
+    @Test
     void dynamicWordsCheck() {
-        $(".CountryFrontHeroBanner-module__container____cgVm").$(".CountryFrontHeroBanner-module__content___ZEhFp")
-                .$("header_words_animated__Word-sc-1gcosuw-1")
+        $(".DefaultPageTemplate__MainContent-sc-kc7zgd-1").$(".header_words_animated_")
+                .$(".CountryFrontHeroBanner-module__content___ZEhFp")
                 .shouldHave(Condition.attribute("style", "animation-delay: 0s;"));
     }
+
 
 }
