@@ -26,24 +26,7 @@ public class Login {
         $(".Button-module__button___WpJP1").click();
     }
 
-    @Test
-    void logoCheck() {
-        open("https://wolt.com/en/cyp");
-        $(".ConsentsBanner__Root-sc-194d5oz-0").$(".Button__Root-sc-a3fg5q-2").click();
-        $(".Button-module__button___WpJP1").click();
 
-        $(".MainHeader__LogoLink-sc-5qxwnz-2").shouldHave(Condition.href("/en/discovery"));
-    }
-
-    @Test
-    void logoClick() {
-        open("https://wolt.com/en/cyp");
-        $(".ConsentsBanner__Root-sc-194d5oz-0").$(".Button__Root-sc-a3fg5q-2").click();
-        $(".Button-module__button___WpJP1").click();
-
-        $(".MainHeader__LogoLink-sc-5qxwnz-2").click();
-        webdriver().shouldHave(url("https://wolt.com/en/discovery"));
-    }
 
 
 
