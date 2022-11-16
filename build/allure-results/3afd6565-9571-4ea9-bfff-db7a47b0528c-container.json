@@ -1,0 +1,1 @@
+{"uuid":"3afd6565-9571-4ea9-bfff-db7a47b0528c","name":"MainPageCheck","children":["afb9b8db-97ec-4339-ab96-b5023d148d5c"],"befores":[{"name":"setUp","status":"passed","stage":"finished","steps":[],"attachments":[],"parameters":[],"start":1668376559585,"stop":1668376587905}],"afters":[],"start":1668376559398,"stop":1668376594629}
