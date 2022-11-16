@@ -1,8 +1,13 @@
 package com.wolt.Tests;
 
+import com.codeborne.selenide.CollectionCondition;
 import com.codeborne.selenide.Condition;
 import com.wolt.TestsSupport.Base;
 import org.junit.jupiter.api.Test;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+
+import java.util.List;
 
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.WebDriverConditions.url;
@@ -39,29 +44,6 @@ public class MainPageCheck extends Base {
         $(".AuthModal__ScreenWrapper-sc-1u3qek0-0").shouldHave(Condition.text("Create an account or log in"));
     }
 
-    @Test
-    void pictureCheck() {
-
-
-               // .shouldHave(Condition.attribute("img", "https://cdn.wolt.com/frontpage-assets/hero-images/0_Sunday.jpg"));
-
-                        //.find(Condition.attribute("img src", "https://cdn.wolt.com/frontpage-assets/hero-images/0_Sunday.jpg"));
-
-      $(".CountryFrontHeroBanner-module__root___txolf").$("img")
-              .shouldHave(Condition.image);
-
-             // .shouldHave(Condition.image);
-
-                //.$(".img src")
-               // .shouldHave(Condition.attributeMatching("img src", "https://cdn.wolt.com/frontpage-assets/hero-images/0_Sunday.jpg"));
-
-
-       // $("image")
-              //  .shouldBe(Condition.image"https://cdn.wolt.com/frontpage-assets/hero-images/0_Sunday.jpg");
-    }
-
-
-
 
     @Test
     void dynamicWordsCheck() {
@@ -70,5 +52,17 @@ public class MainPageCheck extends Base {
                 .shouldHave(Condition.attribute("style", "animation-delay: 0s;"));
     }
 
+    @Test
+    void citiesHeading(){
+        $(".CitySelection-module__container___xXS1B").shouldHave(Condition.text("Explore cities where you find Wolt"));
+        $(".SideNav-module__sideNavigationTitle___BELWP").shouldHave(Condition.text("Cyprus"));
+        $$(".CitySelection-module__contentWrapper___BWfyh").first().shouldHave(Condition.text("Ammochostos"));
+        $$(".CitySelection-module__contentWrapper___BWfyh").shouldHave(CollectionCondition.texts("Larnaca", "Limassol"));
+
+                //.shouldHave(CollectionCondition.texts("Ammochostos"));
+
+
+        //$(".CitySelection-module__contentWrapper___BWfyh").$("#ListOfCities").shouldHave(Condition.text("Ammochostos"));
+    }
 
 }
