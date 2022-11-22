@@ -3,16 +3,24 @@ package com.wolt.Tests;
 import com.codeborne.selenide.CollectionCondition;
 import com.codeborne.selenide.Condition;
 import com.wolt.TestsSupport.Base;
+import com.wolt.TestsSupport.Cities1;
+import com.wolt.TestsSupport.Cities2;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.EnumSource;
+import org.junit.jupiter.params.provider.ValueSource;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
+import java.util.HashMap;
 import java.util.List;
 
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.WebDriverConditions.url;
 
 public class MainPageCheck extends Base {
+
+    Cities1 s = new Cities1();
 
     @Test
     void woltLogoClick() {
@@ -52,17 +60,30 @@ public class MainPageCheck extends Base {
                 .shouldHave(Condition.attribute("style", "animation-delay: 0s;"));
     }
 
+
     @Test
-    void citiesHeading(){
+    void citiesHeading(String cities){
         $(".CitySelection-module__container___xXS1B").shouldHave(Condition.text("Explore cities where you find Wolt"));
         $(".SideNav-module__sideNavigationTitle___BELWP").shouldHave(Condition.text("Cyprus"));
         $$(".CitySelection-module__contentWrapper___BWfyh").first().shouldHave(Condition.text("Ammochostos"));
-        $$(".CitySelection-module__contentWrapper___BWfyh").shouldHave(CollectionCondition.texts("Larnaca", "Limassol"));
+        $$(".CitySelection-module__contentWrapper___BWfyh").shouldHave();
+        }
 
-                //.shouldHave(CollectionCondition.texts("Ammochostos"));
+
+    @EnumSource(Cities2.class)
+    @ParameterizedTest(name = "Checking all cities on the main page")
+    void checkCities(Cities2 allCities) {
+        $$(".CitySelection-module__contentWrapper___BWfyh").find(Condition.text(allCities.city)).shouldBe(Condition.visible);
+    }
 
 
-        //$(".CitySelection-module__contentWrapper___BWfyh").$("#ListOfCities").shouldHave(Condition.text("Ammochostos"));
+    @ValueSource(strings = {"Ammochostos", "Larnaca", "Limassol", "Nicosia", "Paphos"})
+    @ParameterizedTest(name = "Check all cities")
+    void checkTowns(String cities) {
+        $$(".CitySelection-module__contentWrapper___BWfyh").find(Condition.text(cities)).shouldBe(Condition.visible);
+
     }
 
 }
+
+
