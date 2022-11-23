@@ -28,9 +28,6 @@ public class Login {
 
 
 
-
-
-
     @Test
     void switchToLimassol() {
         open("https://wolt.com/en/cyp");
@@ -38,7 +35,7 @@ public class Login {
         $(".Button-module__button___WpJP1").click();
         $(".CitySelection-module__container___xXS1B").scrollTo().shouldHave(Condition.text("Limassol"));
         $(".List-module__listOfCities____EgRr").$(".ListItem-module__container___ji0Cg", 2).click();
-        $(".ControlledDeliveryLocationButton__LocationName-sc-124bug2-2").shouldHave(Condition.text("Limassol"));
+        $(".gdQFQj").shouldHave(Condition.text("Limassol"));
     }
 
     @Test

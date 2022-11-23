@@ -62,12 +62,12 @@ public class MainPageCheck extends Base {
 
 
     @Test
-    void citiesHeading(String cities){
+    void citiesHeading(){
         $(".CitySelection-module__container___xXS1B").shouldHave(Condition.text("Explore cities where you find Wolt"));
         $(".SideNav-module__sideNavigationTitle___BELWP").shouldHave(Condition.text("Cyprus"));
         $$(".CitySelection-module__contentWrapper___BWfyh").first().shouldHave(Condition.text("Ammochostos"));
-        $$(".CitySelection-module__contentWrapper___BWfyh").shouldHave();
-        }
+        $$(".CitySelection-module__contentWrapper___BWfyh").shouldHave(); //можно подставить цикл for
+    }
 
 
     @EnumSource(Cities2.class)
@@ -81,7 +81,37 @@ public class MainPageCheck extends Base {
     @ParameterizedTest(name = "Check all cities")
     void checkTowns(String cities) {
         $$(".CitySelection-module__contentWrapper___BWfyh").find(Condition.text(cities)).shouldBe(Condition.visible);
+    }
 
+
+    @Test
+    void discoverBannerCheckHeadingPictureVideo() {
+        $(".HalfVideo__Container-sc-1oodkf4-1").scrollTo().shouldHave(Condition.text("What is Wolt?"));
+        $(".HalfVideo-module__video___lQp97")
+                .shouldHave(Condition.attribute("poster",
+                        "https://consumer-static-assets.wolt.com/frontpage-assets/video-cover-image-4.jpg"));
+        $(".HalfVideo-module__video___lQp97")
+                .shouldHave(Condition.attribute("src",
+                        "https://consumer-static-assets.wolt.com/frontpage-assets/Wolt_Brand_Film_2020.mp4"));
+    }
+
+
+    @Test
+    void discoverBannerPlayButton() {
+        $(".HalfVideo__Container-sc-1oodkf4-1").scrollTo();
+        $(".PlayButton-module__playButton___D39jO").click();
+
+        sleep(500);
+        $$(".HalfVideo-module__play___r_isU").filterBy(Condition.cssClass(".CloseButton-module__closeButton___cMirh"));
+
+        //$(".HalfVideo-module__videoWrapper___Bs5gr").shouldHave(Condition.cssClass(".CloseButton-module__closeButton___cMirh"));
+    }
+
+
+    @Test
+    void discoverBannerTextLink() {
+        $(".HalfVideo__Container-sc-1oodkf4-1").scrollTo();
+        $(".PlayButton__Text-sc-1dcwfel-0").click();
     }
 
 }
