@@ -1,16 +1,21 @@
 package com.wolt.Tests;
 
+import com.codeborne.selenide.Condition;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
 import java.util.HashMap;
 import java.util.List;
 
+import static com.codeborne.selenide.Selenide.$$;
+
 public class Practicetests {
 
-    @Test
-    void pictureCheck() {
+    //@Test
+   // void pictureCheck() {
 
          //List links=driver.findElements(By.tagName("img"));
         // this will display list of all images exist on page
@@ -52,6 +57,15 @@ public class Practicetests {
 //    }
 //                System.out.println(s);
 
+/*
+    @ValueSource(strings = {"Ammochostos", "Larnaca", "Limassol", "Nicosia", "Paphos"})
+    @ParameterizedTest(name = "Check all cities")
+    void checkTowns(String cities) {
+        $$(".CitySelection-module__contentWrapper___BWfyh").find(Condition.text(cities)).shouldBe(Condition.visible);
+    }
 
 
-}
+   }
+   }
+ */
+

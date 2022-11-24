@@ -27,7 +27,6 @@ public class Login {
     }
 
 
-
     @Test
     void switchToLimassol() {
         open("https://wolt.com/en/cyp");
@@ -46,10 +45,10 @@ public class Login {
         $(".Button-module__button___WpJP1").click();
         $(".CitySelection-module__container___xXS1B").scrollTo().shouldHave(Condition.text("Limassol"));
         $(".List-module__listOfCities____EgRr").$(".ListItem-module__container___ji0Cg", 2).click();
-        $(".ControlledDeliveryLocationButton__LocationName-sc-124bug2-2").shouldHave(Condition.text("Limassol"));
+        $(".Header__AnimateToHiddenExtraLeftContainer-sc-1wbjs06-8").shouldHave(Condition.text("Limassol"));
 
         $(".Popover__Root-sc-mo27do-0")
-                .shouldHave(Condition.text("You can change your delivery location here. Happy Wolting \uD83D\uDC99"));
+                .shouldHave(Condition.text("You can change your delivery location here. Happy Wolting"));
     }
 
 

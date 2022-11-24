@@ -5,6 +5,7 @@ import com.codeborne.selenide.Condition;
 import com.wolt.TestsSupport.Base;
 import com.wolt.TestsSupport.Cities1;
 import com.wolt.TestsSupport.Cities2;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.EnumSource;
@@ -77,16 +78,14 @@ public class MainPageCheck extends Base {
     }
 
 
-    @ValueSource(strings = {"Ammochostos", "Larnaca", "Limassol", "Nicosia", "Paphos"})
-    @ParameterizedTest(name = "Check all cities")
-    void checkTowns(String cities) {
-        $$(".CitySelection-module__contentWrapper___BWfyh").find(Condition.text(cities)).shouldBe(Condition.visible);
-    }
-
-
     @Test
     void discoverBannerCheckHeadingPictureVideo() {
         $(".HalfVideo__Container-sc-1oodkf4-1").scrollTo().shouldHave(Condition.text("What is Wolt?"));
+        $(".HalfVideo__Container-sc-1oodkf4-1").shouldHave(Condition.text("Delivered."));
+        $(".HalfVideo__Container-sc-1oodkf4-1").shouldHave(Condition.text("Wolt makes it incredibly easy for"));
+        $(".PlayButton-module__icon___HZW3O").$(".PlayButton-module__playIcon___bd0jC")
+                .shouldHave(Condition.attribute("xmlns", "http://www.w3.org/2000/svg"));
+        $(".PlayButton__Text-sc-1dcwfel-0").shouldHave(Condition.text("Watch video"));
         $(".HalfVideo-module__video___lQp97")
                 .shouldHave(Condition.attribute("poster",
                         "https://consumer-static-assets.wolt.com/frontpage-assets/video-cover-image-4.jpg"));
@@ -97,14 +96,27 @@ public class MainPageCheck extends Base {
 
 
     @Test
-    void discoverBannerPlayButton() {
+    void discoverBannerPlayButtonXbuttonPresent() { //Нужен ли этот тест?
         $(".HalfVideo__Container-sc-1oodkf4-1").scrollTo();
-        $(".PlayButton-module__playButton___D39jO").click();
+        $(".PlayButton-module__icon___HZW3O").click();
+        sleep(1000);
+        $(".CloseButton-module__closeButton___cMirh").$(".CloseButton-module__closeIcon___vPEhM")
+         .shouldHave(Condition.attribute("xmlns", "http://www.w3.org/2000/svg"));
+    }
 
-        sleep(500);
-        $$(".HalfVideo-module__play___r_isU").filterBy(Condition.cssClass(".CloseButton-module__closeButton___cMirh"));
 
-        //$(".HalfVideo-module__videoWrapper___Bs5gr").shouldHave(Condition.cssClass(".CloseButton-module__closeButton___cMirh"));
+    @Test
+    void discoverBannerPlayButtonClick() {
+        $(".HalfVideo__Container-sc-1oodkf4-1").scrollTo();
+        $(".PlayButton-module__icon___HZW3O").click();
+        sleep(1500);
+        $(".CloseButton-module__closeButton___cMirh").$(".CloseButton-module__icon___Y7DJn").click();
+        $(".HalfVideo__Container-sc-1oodkf4-1").shouldHave(Condition.text("What is Wolt?"));
+        $(".HalfVideo__Container-sc-1oodkf4-1").shouldHave(Condition.text("Delivered."));
+        $(".HalfVideo__Container-sc-1oodkf4-1").shouldHave(Condition.text("Wolt makes it incredibly easy for"));
+        $(".PlayButton-module__icon___HZW3O").$(".PlayButton-module__playIcon___bd0jC")
+                .shouldHave(Condition.attribute("xmlns", "http://www.w3.org/2000/svg"));
+        $(".PlayButton__Text-sc-1dcwfel-0").shouldHave(Condition.text("Watch video"));
     }
 
 
@@ -112,8 +124,23 @@ public class MainPageCheck extends Base {
     void discoverBannerTextLink() {
         $(".HalfVideo__Container-sc-1oodkf4-1").scrollTo();
         $(".PlayButton__Text-sc-1dcwfel-0").click();
+        sleep(1500);
+        $(".CloseButton-module__closeButton___cMirh").$(".CloseButton-module__icon___Y7DJn").click();
+        $(".HalfVideo__Container-sc-1oodkf4-1").shouldHave(Condition.text("What is Wolt?"));
+        $(".HalfVideo__Container-sc-1oodkf4-1").shouldHave(Condition.text("Delivered."));
+        $(".HalfVideo__Container-sc-1oodkf4-1").shouldHave(Condition.text("Wolt makes it incredibly easy for"));
+        $(".PlayButton-module__icon___HZW3O").$(".PlayButton-module__playIcon___bd0jC")
+                .shouldHave(Condition.attribute("xmlns", "http://www.w3.org/2000/svg"));
+        $(".PlayButton__Text-sc-1dcwfel-0").shouldHave(Condition.text("Watch video"));
     }
 
+
+    @Test
+    void middleTextModule() {
+        $(".TitleText-module__container___dWvWp").scrollTo();
+        $(".TitleText-sc-1njwnfm-0").shouldHave(Condition.text("Did you know?"));
+        $(".TitleText-sc-1njwnfm-0").shouldHave(Condition.text("Getting home-delivered sushi is more than"));
+    }
 }
 
 
