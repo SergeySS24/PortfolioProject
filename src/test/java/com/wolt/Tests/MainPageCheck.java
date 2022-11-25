@@ -65,8 +65,12 @@ public class MainPageCheck extends Base {
     @Test
     void citiesHeading(){
         $(".CitySelection-module__container___xXS1B").shouldHave(Condition.text("Explore cities where you find Wolt"));
-        $(".SideNav-module__sideNavigationTitle___BELWP").shouldHave(Condition.text("Cyprus"));
+        //$(".SideNav-module__sideNavigationTitle___BELWP").shouldHave(Condition.text("Cyprus"));
+
+        Assertions.assertEquals("Cyprus", $(".SideNav-module__sideNavigationTitle___BELWP"));
+
         $$(".CitySelection-module__contentWrapper___BWfyh").first().shouldHave(Condition.text("Ammochostos"));
+
         $$(".CitySelection-module__contentWrapper___BWfyh").shouldHave(); //можно подставить цикл for
     }
 
@@ -109,7 +113,7 @@ public class MainPageCheck extends Base {
     void discoverBannerPlayButtonClick() {
         $(".HalfVideo__Container-sc-1oodkf4-1").scrollTo();
         $(".PlayButton-module__icon___HZW3O").click();
-        sleep(1500);
+        sleep(3000);
         $(".CloseButton-module__closeButton___cMirh").$(".CloseButton-module__icon___Y7DJn").click();
         $(".HalfVideo__Container-sc-1oodkf4-1").shouldHave(Condition.text("What is Wolt?"));
         $(".HalfVideo__Container-sc-1oodkf4-1").shouldHave(Condition.text("Delivered."));
@@ -124,7 +128,8 @@ public class MainPageCheck extends Base {
     void discoverBannerTextLink() {
         $(".HalfVideo__Container-sc-1oodkf4-1").scrollTo();
         $(".PlayButton__Text-sc-1dcwfel-0").click();
-        sleep(1500);
+        sleep(3000);
+        //$(".CloseButton-module__closeButton___cMirh").shouldBe(Condition.visible);
         $(".CloseButton-module__closeButton___cMirh").$(".CloseButton-module__icon___Y7DJn").click();
         $(".HalfVideo__Container-sc-1oodkf4-1").shouldHave(Condition.text("What is Wolt?"));
         $(".HalfVideo__Container-sc-1oodkf4-1").shouldHave(Condition.text("Delivered."));
