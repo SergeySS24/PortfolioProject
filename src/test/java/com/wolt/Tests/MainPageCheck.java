@@ -113,8 +113,10 @@ public class MainPageCheck extends Base {
     void discoverBannerPlayButtonClick() {
         $(".HalfVideo__Container-sc-1oodkf4-1").scrollTo();
         $(".PlayButton-module__icon___HZW3O").click();
-        sleep(3000);
+        //sleep(3000);
+        $(".CloseButton-module__closeButton___cMirh").shouldBe(Condition.visible);
         $(".CloseButton-module__closeButton___cMirh").$(".CloseButton-module__icon___Y7DJn").click();
+        $(".HalfVideo__Container-sc-1oodkf4-1").shouldBe(Condition.visible);
         $(".HalfVideo__Container-sc-1oodkf4-1").shouldHave(Condition.text("What is Wolt?"));
         $(".HalfVideo__Container-sc-1oodkf4-1").shouldHave(Condition.text("Delivered."));
         $(".HalfVideo__Container-sc-1oodkf4-1").shouldHave(Condition.text("Wolt makes it incredibly easy for"));
@@ -128,9 +130,10 @@ public class MainPageCheck extends Base {
     void discoverBannerTextLink() {
         $(".HalfVideo__Container-sc-1oodkf4-1").scrollTo();
         $(".PlayButton__Text-sc-1dcwfel-0").click();
-        sleep(3000);
-        //$(".CloseButton-module__closeButton___cMirh").shouldBe(Condition.visible);
+        ///sleep(3000);
+        $(".CloseButton-module__closeButton___cMirh").shouldBe(Condition.visible);
         $(".CloseButton-module__closeButton___cMirh").$(".CloseButton-module__icon___Y7DJn").click();
+        $(".HalfVideo__Container-sc-1oodkf4-1").shouldBe(Condition.visible);
         $(".HalfVideo__Container-sc-1oodkf4-1").shouldHave(Condition.text("What is Wolt?"));
         $(".HalfVideo__Container-sc-1oodkf4-1").shouldHave(Condition.text("Delivered."));
         $(".HalfVideo__Container-sc-1oodkf4-1").shouldHave(Condition.text("Wolt makes it incredibly easy for"));
@@ -145,6 +148,13 @@ public class MainPageCheck extends Base {
         $(".TitleText-module__container___dWvWp").scrollTo();
         $(".TitleText-sc-1njwnfm-0").shouldHave(Condition.text("Did you know?"));
         $(".TitleText-sc-1njwnfm-0").shouldHave(Condition.text("Getting home-delivered sushi is more than"));
+    }
+
+
+    @Test
+    void interactiveMiddleModule() {
+        $(".GetWolt-module__root___k50dq").scrollTo().shouldHave(Condition.text("Honey, we’re not cooking tonight"));
+        $(".GetWolt-module__content___r26Er").shouldHave(Condition.text("Get the Apple-awarded Wolt app and choose from 40,000"));
     }
 }
 
