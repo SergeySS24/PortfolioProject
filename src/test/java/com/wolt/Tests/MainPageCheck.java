@@ -155,7 +155,31 @@ public class MainPageCheck extends Base {
     void interactiveMiddleModule() {
         $(".GetWolt-module__root___k50dq").scrollTo().shouldHave(Condition.text("Honey, we’re not cooking tonight"));
         $(".GetWolt-module__content___r26Er").shouldHave(Condition.text("Get the Apple-awarded Wolt app and choose from 40,000"));
+        $(".GetWolt-module__platformBadge___WDUQa")
+                .shouldHave(Condition.href("https://wolt.onelink.me/Uy67?pid=not-available-web-to-app&c=not-available-" +
+                        "web-to-app&af_adset=not-available-web-to-app&af_keywords=" +
+                        "not-available-web-to-app&af_sub1=not-available-web-to-app&af_sub2=%2Fen%2Fcyp&af_r=https%3A%2F%2Fitunes" +
+                        ".apple.com%2Ffi%2Fapp%2Fwolt%2Fid943905271%3Fmt%3D8"));
+        $(".GetWolt-module__platformBadge___WDUQa", 1)
+                .shouldHave(Condition.href("https://wolt.onelink.me/Uy67?pid=not-available-web-to-app&c=not-available" +
+                        "-web-to-app&af_adset=not-available-web-to-app&af_keywords=not-available-web-to-app&af_sub1=not" +
+                        "-available-web-to-app&af_sub2=%2Fen%2Fcyp&af_r=https%3A%2F%2Fplay.google.com%2" +
+                        "Fstore%2Fapps%2Fdetails%3Fid%3Dcom.wolt.android"));
+        $(".GetWolt-module__phonesImage___vGI3v")
+                .shouldHave(Condition.attribute("src", "https://consumer-static-assets.wolt.com/frontpage-assets/front-cells.png"));
+
+
+   // $(".GetWolt-module__phonesImage___vGI3v", 1)
+               // .shouldHave(Condition.attribute("src", "https://consumer-static-assets.wolt.com/frontpage-assets/ios-discovery.jpg"));
+
+
+
+                //.shouldHave(Condition.attribute("src", "https://consumer-static-assets.wolt.com/frontpage-assets/ios-discovery.jpg"));
+
     }
+
+
+
 }
 
 
