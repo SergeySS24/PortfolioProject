@@ -167,19 +167,66 @@ public class MainPageCheck extends Base {
                         "Fstore%2Fapps%2Fdetails%3Fid%3Dcom.wolt.android"));
         $(".GetWolt-module__phonesImage___vGI3v")
                 .shouldHave(Condition.attribute("src", "https://consumer-static-assets.wolt.com/frontpage-assets/front-cells.png"));
-
-
-   // $(".GetWolt-module__phonesImage___vGI3v", 1)
-               // .shouldHave(Condition.attribute("src", "https://consumer-static-assets.wolt.com/frontpage-assets/ios-discovery.jpg"));
-
-
-
-                //.shouldHave(Condition.attribute("src", "https://consumer-static-assets.wolt.com/frontpage-assets/ios-discovery.jpg"));
-
     }
 
 
+    @Test
+    void suggestionSection1() {
+        $(".CardRow__Title-sc-36zoul-1").scrollTo().shouldHave(Condition.text("Hungry for more than food?"));
+        $(".Card-module__img___NhWat").shouldHave(Condition.attribute("style"));
+        $(".Card-module__pad___nryOm").shouldHave(Condition.text("Get paid as a courier partner"));
+        $(".LinkButton__StyledAnchor-sc-7867te-0").shouldHave(Condition.text("Apply now"));
+        $(".LinkButton__StyledAnchor-sc-7867te-0").shouldHave(Condition.href("https://explore.wolt.com/en/cyp/couriers"));
+        $(".LinkButton__StyledAnchor-sc-7867te-0").click();
+        webdriver().shouldHave(url("https://explore.wolt.com/en/cyp/couriers"));
+    }
 
+
+    @Test
+    void suggestionSection2() {
+        $(".CardRow__Title-sc-36zoul-1").scrollTo();
+        $(".Card__Root-sc-1wsaipe-0", 1).shouldHave(Condition.text("Serve more people as a restaurant partner"));
+        $(".Card-module__img___NhWat", 1).shouldHave(Condition.attribute("style"));
+        $(".LinkButton__StyledAnchor-sc-7867te-0", 1).shouldHave(Condition.text("Apply now"));
+        $(".LinkButton__StyledAnchor-sc-7867te-0", 1).shouldHave(Condition.href("/en/merchants"));
+        $(".LinkButton__StyledAnchor-sc-7867te-0", 1).click();
+        webdriver().shouldHave(url("https://wolt.com/en/merchants"));
+    }
+
+
+    @Test
+    void suggestionSection3() {
+        $(".CardRow__Title-sc-36zoul-1").scrollTo();
+        $(".Card__Root-sc-1wsaipe-0", 2).shouldHave(Condition.text("Enter a new chapter and find a job at Wolt"));
+        $(".Card-module__img___NhWat", 2).shouldHave(Condition.attribute("style"));
+        $(".LinkButton__StyledAnchor-sc-7867te-0", 2).shouldHave(Condition.text("Apply now"));
+        $(".LinkButton__StyledAnchor-sc-7867te-0", 2).shouldHave(Condition.href("/en/jobs"));
+        $(".LinkButton__StyledAnchor-sc-7867te-0", 2).click();
+        webdriver().shouldHave(url("https://wolt.com/en/jobs"));
+    }
+
+    @Test
+    void footerAppStoreCheck() {
+        $("#footer").scrollTo();
+        $(".Footer__AppLink-sc-1ki6z7e-11")
+                .shouldHave(Condition.href("https://wolt.onelink.me/Uy67?pid=not-available-web-to-app&c=not-available-" +
+                        "web-to-app&af_adset=not-available-web-to-app&af_keywords=not-available-web-to-app&af_sub1=not-" +
+                        "available-web-to-app&af_sub2=%2Fen%2Fcyp&af_r=https%3A%2F%2Fitunes.apple.com%2Ffi%2Fapp%2Fwolt%2Fid943905271%3Fmt%3D8"));
+        $(".Footer__AppLink-sc-1ki6z7e-11").shouldHave(Condition.attribute("title",
+                "Download the Wolt iOS app on the App Store"));
+    }
+
+
+    @Test
+    void footerGooglePlayCheck() {
+        $("#footer").scrollTo();
+        $(".Footer__AppLink-sc-1ki6z7e-11", 1)
+                .shouldHave(Condition.href("https://wolt.onelink.me/Uy67?pid=not-available-web-to-app&c=not-available-" +
+                        "web-to-app&af_adset=not-available-web-to-app&af_keywords=not-available-web-to-app&af_sub1=not-" +
+                        "available-web-to-app&af_sub2=%2Fen%2Fcyp&af_r=https%3A%2F%2Fplay.google.com%2Fstore%2Fapps%2Fdetails%3Fid%3Dcom.wolt.android"));
+        $(".Footer__AppLink-sc-1ki6z7e-11",1).shouldHave(Condition.attribute("title",
+                "Download the Wolt Android app on Google Play"));
+    }
 }
 
 
