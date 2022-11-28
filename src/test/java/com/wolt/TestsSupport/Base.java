@@ -11,7 +11,7 @@ public class Base {
 
     @BeforeAll
     static void setUp() {
-        Configuration.holdBrowserOpen = true;
+       // Configuration.holdBrowserOpen = true;
         Configuration.browserSize = "1920x1080";
 
         open("https://wolt.com/en/cyp");

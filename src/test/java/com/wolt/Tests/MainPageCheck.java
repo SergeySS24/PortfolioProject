@@ -2,12 +2,14 @@ package com.wolt.Tests;
 
 import com.codeborne.selenide.CollectionCondition;
 import com.codeborne.selenide.Condition;
+import com.codeborne.selenide.Selenide;
 import com.wolt.TestsSupport.Base;
 import com.wolt.TestsSupport.Cities1;
 import com.wolt.TestsSupport.Cities2;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.EnumSource;
 import org.junit.jupiter.params.provider.ValueSource;
 import org.openqa.selenium.By;
@@ -227,6 +229,28 @@ public class MainPageCheck extends Base {
         $(".Footer__AppLink-sc-1ki6z7e-11",1).shouldHave(Condition.attribute("title",
                 "Download the Wolt Android app on Google Play"));
     }
+
+
+    @CsvSource(value = {"For couriers | https://explore.wolt.com/en/cyp/couriers",
+            "For restaurants | https://wolt.com/en/merchants"},
+    delimiter = '|')
+
+    @ParameterizedTest (name = "ch)")
+    void specialTest(String testData, String expectedResult) {
+
+        open("https://wolt.com/en/cyp");
+        $(".ConsentsBanner__Root-sc-194d5oz-0").$(".Button__Root-sc-a3fg5q-2").click();
+        $(".Button-module__button___WpJP1").click();
+        $("#footer").scrollTo();
+
+        $(".FooterLinkGroup__Content-sc-1vexfqi-2").shouldHave(Condition.text(testData));
+        $(".Footer__Link-sc-1ki6z7e-18").click();
+        webdriver().shouldHave(url(expectedResult));
+    }
+
+
+
+
 }
 
 
