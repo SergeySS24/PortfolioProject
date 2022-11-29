@@ -1,8 +1,10 @@
 package com.wolt.Tests;
 
 import com.codeborne.selenide.Condition;
+import com.codeborne.selenide.Selenide;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -10,7 +12,8 @@ import org.openqa.selenium.WebElement;
 import java.util.HashMap;
 import java.util.List;
 
-import static com.codeborne.selenide.Selenide.$$;
+import static com.codeborne.selenide.Selenide.*;
+import static com.codeborne.selenide.WebDriverConditions.url;
 
 public class Practicetests {
 
@@ -69,3 +72,26 @@ public class Practicetests {
    }
  */
 
+//Assertions.assertEquals("Cyprus", $(".SideNav-module__sideNavigationTitle___BELWP"));
+//Assertions.assertEquals("Cyprus", $(".SideNav-module__sideNavigationTitle___BELWP"));
+
+
+// $$(".CitySelection-module__contentWrapper___BWfyh").first().shouldHave(Condition.text("Ammochostos"));
+
+//$$(".CitySelection-module__contentWrapper___BWfyh").shouldHave(); //можно подставить цикл for
+
+
+//    @CsvSource(value = {"For couriers | https://explore.wolt.com/en/cyp/couriers",
+//            "For restaurants | https://wolt.com/en/merchants"},
+//            delimiter = '|')
+//
+//    @ParameterizedTest(name = "ch)")
+//    void specialTest(String testData, String expectedResult) {
+//
+//        $("#footer").scrollTo();
+//
+//        $(".FooterLinkGroup__Content-sc-1vexfqi-2").shouldHave(Condition.text(testData));
+//        $(".Footer__Link-sc-1ki6z7e-18").click();
+//        webdriver().shouldHave(url(expectedResult));
+//        Selenide.back();
+//    }

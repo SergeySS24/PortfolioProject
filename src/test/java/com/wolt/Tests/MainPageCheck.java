@@ -1,29 +1,20 @@
 package com.wolt.Tests;
 
-import com.codeborne.selenide.CollectionCondition;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Selenide;
 import com.wolt.TestsSupport.Base;
-import com.wolt.TestsSupport.Cities1;
 import com.wolt.TestsSupport.Cities2;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.EnumSource;
 import org.junit.jupiter.params.provider.ValueSource;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 
-import java.util.HashMap;
-import java.util.List;
 
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.WebDriverConditions.url;
 
 public class MainPageCheck extends Base {
 
-    Cities1 s = new Cities1();
 
     @Test
     void woltLogoClick() {
@@ -33,47 +24,51 @@ public class MainPageCheck extends Base {
 
     @Test
     void loginElementPresent() {
-        $(".Header__AnimateToHiddenContainer-sc-1wbjs06-6")
+        $(".MainHeader__RightCol-sc-5qxwnz-5")
                 .shouldHave(Condition.text("Log in"));
     }
 
     @Test
     void loginElementClick() {
-        $(".Header__AnimateToHiddenContainer-sc-1wbjs06-6").click();
+        $(".biJhpz").click();
         $(".MethodSelect__Titles-sc-1bkm6bi-1").shouldHave(Condition.text("Create an account or log in"));
     }
 
     @Test
     void signUpElementPresent() {
-        $(".Header__AnimateToHiddenContainer-sc-1wbjs06-6")
+        $(".biJhpz")
                 .shouldHave(Condition.text("Sign up"));
     }
 
     @Test
     void sighUpElementClick() {
-        $(".Header__AnimateToHiddenContainer-sc-1wbjs06-6").click();
+        $(".biJhpz").click();
         $(".AuthModal__ScreenWrapper-sc-1u3qek0-0").shouldHave(Condition.text("Create an account or log in"));
     }
 
 
     @Test
-    void dynamicWordsCheck() {
-        $(".DefaultPageTemplate__MainContent-sc-kc7zgd-1").$(".header_words_animated_")
-                .$(".CountryFrontHeroBanner-module__content___ZEhFp")
-                .shouldHave(Condition.attribute("style", "animation-delay: 0s;"));
+    void searchBarElementCheck() {
+        $(".CountryFrontHeroBanner-module__addressLabel___GPvr0").shouldHave(Condition.text("Delivery address"));
+        $(".Input__Label-sc-cy5jpp-4").shouldHave(Condition.text("Choose a delivery address"));
+        $(".Button-module__button___WpJP1").shouldHave(Condition.attribute("type", "button"));
+        $(".Button-module__button___WpJP1").shouldHave(Condition.text("Search"));
     }
 
 
     @Test
-    void citiesHeading(){
+    void searchBarClick(){
+        $(".Input__Root-sc-cy5jpp-1").click();
+        $(".Popover__Content-sc-mo27do-2").shouldHave(Condition.text("Use my current location"));
+        $(".Button-module__button___WpJP1").click();
+        $(".Popover__Content-sc-mo27do-2").shouldHave(Condition.text("Use my current location"));
+    }
+
+
+    @Test
+    void citiesHeading() {
         $(".CitySelection-module__container___xXS1B").shouldHave(Condition.text("Explore cities where you find Wolt"));
-        //$(".SideNav-module__sideNavigationTitle___BELWP").shouldHave(Condition.text("Cyprus"));
-
-        Assertions.assertEquals("Cyprus", $(".SideNav-module__sideNavigationTitle___BELWP"));
-
-        $$(".CitySelection-module__contentWrapper___BWfyh").first().shouldHave(Condition.text("Ammochostos"));
-
-        $$(".CitySelection-module__contentWrapper___BWfyh").shouldHave(); //можно подставить цикл for
+        $(".SideNav-module__sideNavigationTitle___BELWP").shouldHave(Condition.text("Cyprus"));
     }
 
 
@@ -107,7 +102,7 @@ public class MainPageCheck extends Base {
         $(".PlayButton-module__icon___HZW3O").click();
         sleep(1000);
         $(".CloseButton-module__closeButton___cMirh").$(".CloseButton-module__closeIcon___vPEhM")
-         .shouldHave(Condition.attribute("xmlns", "http://www.w3.org/2000/svg"));
+                .shouldHave(Condition.attribute("xmlns", "http://www.w3.org/2000/svg"));
     }
 
 
@@ -181,6 +176,7 @@ public class MainPageCheck extends Base {
         $(".LinkButton__StyledAnchor-sc-7867te-0").shouldHave(Condition.href("https://explore.wolt.com/en/cyp/couriers"));
         $(".LinkButton__StyledAnchor-sc-7867te-0").click();
         webdriver().shouldHave(url("https://explore.wolt.com/en/cyp/couriers"));
+        Selenide.back();
     }
 
 
@@ -193,6 +189,7 @@ public class MainPageCheck extends Base {
         $(".LinkButton__StyledAnchor-sc-7867te-0", 1).shouldHave(Condition.href("/en/merchants"));
         $(".LinkButton__StyledAnchor-sc-7867te-0", 1).click();
         webdriver().shouldHave(url("https://wolt.com/en/merchants"));
+        Selenide.back();
     }
 
 
@@ -205,6 +202,7 @@ public class MainPageCheck extends Base {
         $(".LinkButton__StyledAnchor-sc-7867te-0", 2).shouldHave(Condition.href("/en/jobs"));
         $(".LinkButton__StyledAnchor-sc-7867te-0", 2).click();
         webdriver().shouldHave(url("https://wolt.com/en/jobs"));
+        Selenide.back();
     }
 
     @Test
@@ -226,31 +224,115 @@ public class MainPageCheck extends Base {
                 .shouldHave(Condition.href("https://wolt.onelink.me/Uy67?pid=not-available-web-to-app&c=not-available-" +
                         "web-to-app&af_adset=not-available-web-to-app&af_keywords=not-available-web-to-app&af_sub1=not-" +
                         "available-web-to-app&af_sub2=%2Fen%2Fcyp&af_r=https%3A%2F%2Fplay.google.com%2Fstore%2Fapps%2Fdetails%3Fid%3Dcom.wolt.android"));
-        $(".Footer__AppLink-sc-1ki6z7e-11",1).shouldHave(Condition.attribute("title",
+        $(".Footer__AppLink-sc-1ki6z7e-11", 1).shouldHave(Condition.attribute("title",
                 "Download the Wolt Android app on Google Play"));
     }
 
 
-    @CsvSource(value = {"For couriers | https://explore.wolt.com/en/cyp/couriers",
-            "For restaurants | https://wolt.com/en/merchants"},
-    delimiter = '|')
+    //checking first footer column
+    @ValueSource(strings = {
+            "For couriers",
+            "For restaurants",
+            "For stores",
+            "For companies",
+            "Wolt Drive"
+    })
 
-    @ParameterizedTest (name = "ch)")
-    void specialTest(String testData, String expectedResult) {
-
-        open("https://wolt.com/en/cyp");
-        $(".ConsentsBanner__Root-sc-194d5oz-0").$(".Button__Root-sc-a3fg5q-2").click();
-        $(".Button-module__button___WpJP1").click();
+    @ParameterizedTest(name = "checking first footer colomn for word {0}")
+    void firstFooterColumnCheck(String testData) {
         $("#footer").scrollTo();
+        $("#FooterLinkGroup-Title-1").shouldHave(Condition.text("Let's do this together"));
 
         $(".FooterLinkGroup__Content-sc-1vexfqi-2").shouldHave(Condition.text(testData));
-        $(".Footer__Link-sc-1ki6z7e-18").click();
-        webdriver().shouldHave(url(expectedResult));
     }
 
 
+    @Test
+    void firstFooterColomnLinkCheck() {
+        $("#footer").scrollTo();
+        $(".Footer__Link-sc-1ki6z7e-18").shouldHave(Condition.href("https://explore.wolt.com/en/cyp/couriers"));
+        $(".Footer__Link-sc-1ki6z7e-18", 1).shouldHave(Condition.href("/en/merchants"));
+        $(".Footer__Link-sc-1ki6z7e-18", 2).shouldHave(Condition.href("/en/retailers"));
+        $(".Footer__Link-sc-1ki6z7e-18", 3).shouldHave(Condition.href("/en/wolt-at-work"));
+        $(".Footer__Link-sc-1ki6z7e-18", 4).shouldHave(Condition.href("/en/drive"));
+    }
 
+
+    //checking second footer column
+    @ValueSource(strings = {
+            "About us",
+            "Jobs",
+            "Responsibility",
+            "Security",
+            "Investors"
+    })
+
+    @ParameterizedTest(name = "checking second footer column for word {0}")
+    void secondFooterColumnCheck(String testData) {
+        $("#footer").scrollTo();
+        $("#FooterLinkGroup-Title-2").shouldHave(Condition.text("Company"));
+
+        $(".FooterLinkGroup__Content-sc-1vexfqi-2", 1).shouldHave(Condition.text(testData));
+    }
+
+
+    //checking third footer column
+    @ValueSource(strings = {
+            "Support",
+            "Media",
+            "Contact"
+    })
+
+    @ParameterizedTest(name = "checking third footer column for word {0}")
+    void thirdFooterColumnCheck(String testData) {
+        $("#footer").scrollTo();
+        $("#FooterLinkGroup-Title-3").shouldHave(Condition.text("Useful links"));
+
+        $(".FooterLinkGroup__Content-sc-1vexfqi-2", 2).shouldHave(Condition.text(testData));
+    }
+
+
+    //checking fourth footer column
+    @ValueSource(strings = {
+            "Wolt blog",
+            "Engineering blog",
+            "Instagram",
+            "Facebook",
+            "Twitter",
+            "LinkedIn"
+    })
+
+    @ParameterizedTest(name = "checking fourth footer column for word {0}")
+    void fourthFooterColumnCheck(String testData) {
+        $("#footer").scrollTo();
+        $("#FooterLinkGroup-Title-4").shouldHave(Condition.text("Follow us"));
+
+        $(".FooterLinkGroup__Content-sc-1vexfqi-2", 3).shouldHave(Condition.text(testData));
+    }
+
+
+    @Test
+    void bottomBarOne() {
+        $("#footer").scrollTo();
+        $(".FooterSettingButton__Root-sc-1nledng-0").shouldHave(Condition.text("Cyprus"));
+        $(".FooterSettingButton__Root-sc-1nledng-0", 1).shouldHave(Condition.text("English"));
+        $(".FooterSettingButton__Root-sc-1nledng-0", 2).shouldHave(Condition.text("Accessibility"));
+    }
+
+
+    @Test
+    void bottomBarTwo() {
+        $("#footer").scrollTo();
+        $(".Footer__BottomLink-sc-1ki6z7e-7").shouldHave(Condition.text("Accessibility Statement"));
+        $(".Footer__BottomLink-sc-1ki6z7e-7", 1).shouldHave(Condition.text("Terms and Conditions"));
+        $(".Footer__BottomLink-sc-1ki6z7e-7", 2).shouldHave(Condition.text("Privacy Policy"));
+
+        $(".Footer__Attribution-sc-1ki6z7e-8").shouldHave(Condition.text("©️ Wolt 2014–2022"));
+    }
 
 }
+
+
+
 
 
