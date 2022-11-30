@@ -110,7 +110,6 @@ public class MainPageCheck extends Base {
     void discoverBannerPlayButtonClick() {
         $(".HalfVideo__Container-sc-1oodkf4-1").scrollTo();
         $(".PlayButton-module__icon___HZW3O").click();
-        //sleep(3000);
         $(".CloseButton-module__closeButton___cMirh").shouldBe(Condition.visible);
         $(".CloseButton-module__closeButton___cMirh").$(".CloseButton-module__icon___Y7DJn").click();
         $(".HalfVideo__Container-sc-1oodkf4-1").shouldBe(Condition.visible);
