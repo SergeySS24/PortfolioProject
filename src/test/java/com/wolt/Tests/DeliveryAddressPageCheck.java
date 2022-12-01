@@ -1,10 +1,12 @@
 package com.wolt.Tests;
 
+import com.codeborne.selenide.CollectionCondition;
 import com.codeborne.selenide.Condition;
 import com.wolt.TestsSupport.Base2;
 import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.$$;
 
 public class DeliveryAddressPageCheck extends Base2 {
 
@@ -41,6 +43,14 @@ public class DeliveryAddressPageCheck extends Base2 {
 
     @Test
     void mainDiscoveryElements(){
-        $(".HeroCarouselV2__List-sc-bwwkga-4");
+
+        $$(".RenderDiscoveryFormat__SectionWrapper-sc-o3nb6j-1").filterBy(Condition.text("Pizza Hut")).shouldHave(CollectionCondition.texts("Pizza Hut"));
+
+
+
+
+        //$(".HeroCarouselV2__Root-sc-bwwkga-0").$(".HeroCarouselV2__ListItem-sc-bwwkga-1",7)
+               // .shouldHave(Condition.attribute("src", "https://imageproxy.wolt.com/" +
+                      //  "wolt-frontpage-images/cities/helsinki/sections/da567e04-fef0-11ec-88d7-56875d0240fc_wolt_at_work_02.png"));
     }
 }
