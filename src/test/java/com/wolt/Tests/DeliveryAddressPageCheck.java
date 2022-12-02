@@ -3,10 +3,12 @@ package com.wolt.Tests;
 import com.codeborne.selenide.CollectionCondition;
 import com.codeborne.selenide.Condition;
 import com.wolt.TestsSupport.Base2;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
+import org.openqa.selenium.By;
 
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.$$;
+import static com.codeborne.selenide.Selectors.byXpath;
+import static com.codeborne.selenide.Selenide.*;
 
 public class DeliveryAddressPageCheck extends Base2 {
 
@@ -45,12 +47,27 @@ public class DeliveryAddressPageCheck extends Base2 {
     void mainDiscoveryElements(){
 
         $$(".RenderDiscoveryFormat__SectionWrapper-sc-o3nb6j-1").filterBy(Condition.text("Pizza Hut")).shouldHave(CollectionCondition.texts("Pizza Hut"));
+        //$(byXpath("//*[@id=\"mainContent\"]/div[3]/div/div/div[1]/div/div/div/ul/li[1]/div")).shouldBe(Condition.hidden);
+       // Object banner = new By.ByXPath("//*[@id=\"mainContent\"]/div[3]/div/div/div[1]/div/div/div/ul/li[5]");
+        //*[@id="mainContent"]/div[3]/div/div/div[1]/div/div/div/ul/li[5]
+    }
+
+    @Disabled
+    @Test
+    void bigGameOffers() {
+        $(".Header-module__headerContainer___gNVva").shouldHave(Condition.text("Big game offers ⚽"));
+    }
 
 
+    @Test
+    void categories() {
+        $(".Header__Heading-sc-1qa68ul-0").shouldHave(Condition.text("Categories"));
+    }
 
 
-        //$(".HeroCarouselV2__Root-sc-bwwkga-0").$(".HeroCarouselV2__ListItem-sc-bwwkga-1",7)
-               // .shouldHave(Condition.attribute("src", "https://imageproxy.wolt.com/" +
-                      //  "wolt-frontpage-images/cities/helsinki/sections/da567e04-fef0-11ec-88d7-56875d0240fc_wolt_at_work_02.png"));
+    @Test
+    void fastestDelivery() {
+        $$(".Header__Heading-sc-1qa68ul-0").filterBy(Condition.text("Fastest delivery"))
+                .shouldHave(CollectionCondition.texts("Fastest delivery"));
     }
 }
