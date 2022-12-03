@@ -70,4 +70,74 @@ public class DeliveryAddressPageCheck extends Base2 {
         $$(".Header__Heading-sc-1qa68ul-0").filterBy(Condition.text("Fastest delivery"))
                 .shouldHave(CollectionCondition.texts("Fastest delivery"));
     }
+
+
+    @Test
+    void supermarkets() {
+        $$(".Header__Heading-sc-1qa68ul-0").filterBy(Condition.text("Supermarkets"))
+                .shouldHave(CollectionCondition.texts("Supermarkets"));
+    }
+
+
+    @Test
+    void popularRightNow() {
+        $$(".Header__Heading-sc-1qa68ul-0").filterBy(Condition.text("Popular right now"))
+                .shouldHave(CollectionCondition.texts("Popular right now"));
+    }
+
+
+    @Test
+    void topRated() {
+        $$(".Header__Heading-sc-1qa68ul-0").filterBy(Condition.text("Top-rated"))
+                .shouldHave(CollectionCondition.texts("Top-rated"));
+    }
+
+
+    @Test
+    void stores() {
+        $$(".Header__Heading-sc-1qa68ul-0").filterBy(Condition.text("Stores"))
+                .shouldHave(CollectionCondition.texts("Stores"));
+    }
+
+
+    @Test
+    void newRestaurants() {
+        //$(".Header__Heading-sc-1qa68ul-0", 4).scrollTo();
+        $$(".Header__Heading-sc-1qa68ul-0").filterBy(Condition.text("New restaurants on Wolt"))
+                .shouldHave(CollectionCondition.texts("New restaurants on Wolt"));
+    }
+
+
+    @Test
+    void freeDelivery() {
+        //$(".Header__Heading-sc-1qa68ul-0", 4).scrollTo();
+        $$(".Header__Heading-sc-1qa68ul-0").filterBy(Condition.text("Free delivery"))
+                .shouldHave(CollectionCondition.texts("Free delivery"));
+    }
+
+
+    @Test
+    void quickLinks() {
+        $(".QuickLinks__ListTitle-sc-jkimc8-0").shouldHave(Condition.text("Quick links"));
+        $(".QuickLinks-module__itemWrapper____Ne1r").$(".DiscoveryLink-module__link___bg0bC")
+                .shouldHave(Condition.href("/en/cyp/limassol/venue/wolt-giftcard"));
+    }
+
+
+    @Test
+    void categoryCafeCheck() {
+        $$(".LinkWithLocale__StyledLink-sc-1xr70lo-0").find(Condition.href("/en/discovery/category/cafe"))
+                .shouldHave(Condition.href("/en/discovery/category/cafe"));
+        $$(".Carousel__ItemContainer-sc-tpksmz-2").filterBy(Condition.text("Cafe")).shouldHave(CollectionCondition.texts("Cafe"));
+        $$(".Carousel__ItemContainer-sc-tpksmz-2").filterBy(Condition.text("138 places")).shouldHave(CollectionCondition.texts("138 places"));
+    }
+
+
+    @Test
+    void storesGroceryCheck() {
+        //$$(".LinkWithLocale__StyledLink-sc-1xr70lo-0").find(Condition.href("/en/discovery/category/grocery"))
+               // .shouldHave(Condition.href("/en/discovery/category/grocery"));
+        $$(".Carousel__ItemContainer-sc-tpksmz-2").filterBy(Condition.text("Grocery")).shouldHave(CollectionCondition.texts("Grocery"));
+       // $$(".Carousel__ItemContainer-sc-tpksmz-2").filterBy(Condition.text("32 places")).shouldHave(CollectionCondition.texts("32 places"));
+    }
 }
