@@ -20,6 +20,18 @@ public class DeliveryAddressPageCheck extends Base2 {
 
 
     @Test
+    void topSearchBarSearch() {
+        $(".SearchInput__Input-sc-1web0kr-2").setValue("The Smuggers");
+        $(".SearchResultItem__Info-sc-1paxeg7-3").shouldHave(Condition.text("The Smuggers"));
+        $(".SearchResultItem__Info-sc-1paxeg7-3").shouldHave(Condition.text("It brings the smug in you!"));
+        $$(".ImageWithBlurHashTransition__StyledImage-sc-58sbex-1").findBy(Condition.attribute("src",
+                "https://imageproxy.wolt.com/venue/61dd470f2affdb8333e7278d/e52f6fa4-5b78-11ed-a739-8e9729307532_image_6483441.jpg"))
+                .shouldHave(Condition.attribute("src",
+                        "https://imageproxy.wolt.com/venue/61dd470f2affdb8333e7278d/e52f6fa4-5b78-11ed-a739-8e9729307532_image_6483441.jpg"));
+    }
+
+
+    @Test
     void subNavigationDiscoveryElementCheck() {
         //$(".DesktopDiscoveryTabLink__Label-sc-1qoyay1-1")
         $(".DesktopDiscoveryTabLink__Label-sc-1qoyay1-1").shouldHave(Condition.text("Discovery"));
