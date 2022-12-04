@@ -21,6 +21,7 @@ public class DeliveryAddressPageCheck extends Base2 {
 
     @Test
     void subNavigationDiscoveryElementCheck() {
+        //$(".DesktopDiscoveryTabLink__Label-sc-1qoyay1-1")
         $(".DesktopDiscoveryTabLink__Label-sc-1qoyay1-1").shouldHave(Condition.text("Discovery"));
         $(".DesktopDiscoveryTabLink__StyledNavLink-sc-1qoyay1-0").shouldHave(Condition.href("/en/discovery"));
         $(".iMVcLF").shouldHave(Condition.visible); //Discovery option is selected and filled by blue color
@@ -59,6 +60,22 @@ public class DeliveryAddressPageCheck extends Base2 {
                 .shouldHave(Condition.attribute("poster", "https://discovery-cdn.wolt.com/content_editor/banners/images/5572323c-6cc8-11ed-a91b-ce4cdf8d8e3b_61c00f4d_88d1_4a75_8652_794d502a3ebc.png"));
     }
 
+
+
+    @Test
+    void disablePreviousButtonCheck() {
+        $$(".Header-module__prevNextButton___iuJ0q").findBy(Condition.attribute("disabled"))
+                .shouldHave(Condition.attribute("disabled"));
+    }
+
+
+    @Test
+    void nextButtonCheck() {
+        $$(".Header-module__prevNextButton___iuJ0q").findBy(Condition.attribute("aria-label", "Next"))
+                .shouldHave(Condition.attribute("aria-label", "Next")).shouldNotHave(Condition.attribute("disabled"));
+    }
+
+
     @Disabled
     @Test
     void bigGameOffers() {
@@ -68,7 +85,7 @@ public class DeliveryAddressPageCheck extends Base2 {
 
     @Test
     void categories() {
-        $(".Header__Heading-sc-1qa68ul-0").shouldHave(Condition.text("Categories"));
+        $$(".Header__Heading-sc-1qa68ul-0").findBy(Condition.text("Categories")).shouldHave(Condition.text("Categories"));
     }
 
 
@@ -164,9 +181,9 @@ public class DeliveryAddressPageCheck extends Base2 {
         $$(".LinkWithLocale__StyledLink-sc-1xr70lo-0").find(Condition.href("/en/discovery/category/cafe"))
                 .shouldHave(Condition.href("/en/discovery/category/cafe")).scrollTo();
         $$(".CategoryCardBody__Header-sc-1quwqfy-2").find(Condition.text("Cafe")).hover();
-        //$$("CategoryCardHeader__ImageContainer-sc-1c18gm4-0").find(Condition.attribute("style",
-             //   "transform: scale(1.05) translateZ(0px);")).shouldHave(Condition.attribute("style",
-             //   "transform: scale(1.05) translateZ(0px);"));
-
+        $(".iTVZbW").shouldBe(Condition.visible);
     }
+
+
+
 }
