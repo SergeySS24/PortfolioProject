@@ -11,13 +11,6 @@ public class RestaurantPageCheck extends Base3 {
 
 
     @Test
-    void restaurantDeliveryTimeCheck() {
-        $(".ContentButton-module__text___vgef8").shouldHave(Condition.text("The average delivery time is"));
-        $(".ContentButton-module__text___vgef8").shouldHave(Condition.text("min"));
-    }
-
-
-    @Test
     void restaurantOpenTimeCheck() {
         $(".OpeningHoursSnackbar__VenueInformationButton-sc-15xvzc-0").shouldHave(Condition.text("Open today:"));
     }
@@ -25,10 +18,10 @@ public class RestaurantPageCheck extends Base3 {
 
     @Test
     void restaurantMainInformationCheck() {
+        $(".OpeningHoursSnackbar__StyledCaret-sc-15xvzc-2").shouldBe(Condition.visible);
         $(".OpeningHoursSnackbar__StyledCaret-sc-15xvzc-2").click();
         $(".leaflet-interactive").shouldHave(Condition.attribute("d",
-                "M116 182L118 156L143 156L170 141L193 119L298 78L341 78L396 98L409 98L422 " +
-                        "123L428 144L414 144L367 157L229 326L136 194z")); // map check
+                "M116 182L118 153L121 145L169 136L193 119L298 78L341 78L396 98L409 98L422 123L428 144L414 144L367 157L229 326L136 194z")); // map check
         $(".VenueBaseInformation__VenueLargeHeader-sc-13ahrno-2").shouldHave(Condition.text("The Smuggers")); //Restaurant name check
         $(".VenueBaseInformation__VenueDescription-sc-13ahrno-6").shouldHave(Condition.text("It brings the smug in you!"));
         $(".VenueLocationInformation__VenueSmallHeader-sc-qwdnoj-1").shouldHave(Condition.text("Address"));
@@ -36,14 +29,80 @@ public class RestaurantPageCheck extends Base3 {
         $(".VenueOpeningInformation__VenueSmallHeader-sc-9288mn-1").shouldHave(Condition.text("Opening times"));
         $$(".ModalCardPage__ScrollContainer-sc-79y6nv-4").findBy(Condition.text("Monday-Sunday"))
                 .shouldHave(Condition.text("Monday-Sunday"));
+        $$(".VenueLocationInformation__Root-sc-qwdnoj-0").find(Condition.text("See map"))
+                .shouldHave(Condition.text("See map"));
+        $$(".VenueOpeningInformation__Root-sc-9288mn-0").find(Condition.text("Opening times"))
+                .shouldHave(Condition.text("Opening times"));
+        $$(".VenueOpeningInformation__Root-sc-9288mn-0").find(Condition.text("Monday-Sunday"))
+                .shouldHave(Condition.text("Monday-Sunday"));
+        $$(".VenueOpeningInformation__Root-sc-9288mn-0").find(Condition.text("12.00–23.30"))
+                .shouldHave(Condition.text("12.00–23.30"));
+        $$(".CombinedHours__Day-sc-189qmtd-0").find(Condition.text("Monday-Sunday"))
+                .shouldHave(Condition.text("Monday-Sunday"));
+        $$(".CombinedHours__HoursItem-sc-189qmtd-3").find(Condition.text("12.00–23.30"))
+                .shouldHave(Condition.text("12.00–23.30"));
     }
 
 
     @Test
     void restaurantBannerCheck() {
         $(".VenueHeroBanner__TitleSpan-sc-3gkm9v-2").shouldHave(Condition.text("The Smuggers"));
+        $(".VenueHeroBanner__Description-sc-3gkm9v-4").shouldHave(Condition.text("It brings the smug in you!"));
     }
 
 
+    @Test
+    void deliveryPriceCheck() {
+        $(".Tag__Root-sc-1pndqvl-0").shouldHave(Condition.text("Delivery: ")).shouldHave(Condition.text("€1.35"));
+    }
+
+
+    @Test
+    void minOrderCheck() {
+        $(".Tag__Root-sc-1pndqvl-0", 1).shouldHave(Condition.text("Min. order: ")).shouldHave(Condition.text("€6.00"));
+    }
+
+
+    @Test
+    void ratingScoreCheck() {
+        $(".RatingsButton-module__score___fTqMn").shouldHave(Condition.text("9.2"));
+    }
+
+
+    @Test
+    void favoriteButtonCheck() {
+        $(".FavoriteButton-module__button___WF8rF").shouldHave(Condition.text("Favorite"));
+    }
+
+
+    @Test
+    void searchFieldnCheck() {
+        $(".SearchField-module__input___fS6Zk").shouldHave(Condition.attribute("placeholder", "Search"));
+    }
+
+
+    @Test
+    void topCategoryCheck() {
+    $(".Categories-module__listItem___RjQkC").shouldHave(Condition.text("CHRISTMAS SPECIAL"));
+    }
+
+
+    @Test
+    void categoryCheck() {
+        $$(".Categories-module__root___qegos").find(Condition.text("WRAPS")).shouldHave(Condition.text("WRAPS"));
+    }
+
+
+    @Test
+    void openDessertsSection() {
+        $$(".Categories-module__categoryLink___WM_5v").find(Condition.text("DESSERTS")).shouldHave(Condition.text("DESSERTS")).click();
+        $$(".MenuCategoryHeader__Heading-sc-1enduc0-0").find(Condition.text("DESSERTS")).shouldHave(Condition.text("DESSERTS")).shouldBe(Condition.visible);
+        $$(".MenuItem-module__itemContainer____1T8k").find(Condition.text("Milk Chocolate Cookie"))
+                .shouldHave(Condition.text("Milk Chocolate Cookie")).shouldHave(Condition.text("€4.00")).shouldBe(Condition.visible);
+        $$(".MenuItem-module__itemContainer____1T8k").find(Condition.text("Pistachio Cookie"))
+                .shouldHave(Condition.text("Pistachio Cookie")).shouldHave(Condition.text("€4.50")).shouldBe(Condition.visible);
+        $$(".MenuItem-module__itemContainer____1T8k").find(Condition.text("Halva Brownie"))
+                .shouldHave(Condition.text("Halva Brownie")).shouldHave(Condition.text("€4.50")).shouldBe(Condition.visible);
+    }
 
 }
