@@ -63,6 +63,15 @@ public class RestaurantPageCheck extends Base3 {
 
 
     @Test
+    void backgroundImageCheck() {
+        $$(".VenueBackground-module__image___o1lTk").find(Condition.attribute("src",
+                "https://imageproxy.wolt.com/venue/61dd470f2affdb8333e7278d/ea63213c-5b78-11ed-ba7c-2a44cd244fb3_image_6483441.jpg"))
+                .shouldHave(Condition.attribute("src",
+                        "https://imageproxy.wolt.com/venue/61dd470f2affdb8333e7278d/ea63213c-5b78-11ed-ba7c-2a44cd244fb3_image_6483441.jpg"));
+    }
+
+
+    @Test
     void ratingScoreCheck() {
         $(".RatingsButton-module__score___fTqMn").shouldHave(Condition.text("9.2"));
     }
@@ -126,22 +135,30 @@ public class RestaurantPageCheck extends Base3 {
         $$(".Stepper__VisibleInput-sc-ho8tch-1").find(Condition.text("1")).shouldHave(Condition.text("1"));
         $$(".ProductViewFooter__SubmitButtonContent-sc-34t03j-5").find(Condition.text("Add to order")).shouldHave(Condition.text("Add to order"));
         $$(".ProductViewFooter__Price-sc-34t03j-6").find(Condition.text("€4.00")).shouldHave(Condition.text("€4.00"));
-
         $(".ModalNavigationButton__Content-sc-1x1lz0u-1").shouldHave(Condition.text("Product info")).click();
+        $$(".Modal__Container-sc-mw6f31-2").find(Condition.text("Product info")).shouldHave(Condition.text("Product info"));
+        $$(".Modal__Container-sc-mw6f31-2").find(Condition.text("Milk Chocolate Cookie")).shouldHave(Condition.text("Milk Chocolate Cookie"));
+    }
 
 
-
-        //$$(".Heading_root__IDsAG").find(Condition.text("Allergens")).shouldHave(Condition.text("Allergens"));
-
-       // $(".InfoItem_description__WoARL").shouldHave(Condition.text("gluten, eggs, milk"));
-        $$(".ModalCardPage__ScrollContainer-sc-79y6nv-4").find(Condition.text("gluten, eggs, milk"))
-                .shouldHave(Condition.text("gluten, eggs, milk"));
-               // .shouldHave(Condition.text("Allergens")).shouldHave(Condition.text("gluten, eggs, milk"));
-
-
-
-
+    @Test
+    void restaurantInformation() {
+        $$(".VenueSideInfo__Root-sc-1bpnd7a-0").find(Condition.text("Restaurant information"))
+                .shouldHave(Condition.text("Restaurant information"));
+        $$(".VenueSideInfo__SectionTitle-sc-1bpnd7a-3").find(Condition.text("Address"))
+                .shouldHave(Condition.text("Address"));
+        $$(".VenueSideInfo__SectionTitle-sc-1bpnd7a-3").find(Condition.text("Opening times"))
+                .shouldHave(Condition.text("Opening times"));
+    }
 
 
+    @Test
+    void searchItem() {
+        $(".SearchField-module__input___fS6Zk").setValue("Pineapple Dreams");
+        $$(".Venue-module__menu___E3Uyw").find(Condition.text("CHICKEN BURGERS")).shouldHave(Condition.text("CHICKEN BURGERS"));
+        $$(".Venue-module__categories___Lp8Or")
+                .find(Condition.text("CHICKEN BURGERS")).shouldHave(Condition.text("CHICKEN BURGERS"));
+        $$(".MenuItem-module__itemContainer____1T8k").find(Condition.text("Pineapple Dreams")).shouldHave(Condition.text("Pineapple Dreams"));
+        $(".MenuItem-module__toggle___iTf9H").shouldHave(Condition.href("/en/cyp/limassol/restaurant/the-smuggers/pineapple-dreams-itemid-635f6b8bc76974bc0607abef"));
     }
 }
