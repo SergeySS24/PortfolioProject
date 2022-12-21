@@ -4,13 +4,17 @@ import com.codeborne.selenide.CollectionCondition;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.SelenideElement;
+import com.wolt.TestsSupport.LoginSupport;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.WebDriverConditions.url;
+import static io.restassured.RestAssured.given;
 
 public class Login {
+
+    LoginSupport step = new LoginSupport();
 
     @BeforeAll
     static void preparation() {
@@ -24,6 +28,7 @@ public class Login {
         open("https://wolt.com/en/cyp");
         $(".ConsentsBanner__Root-sc-194d5oz-0").$(".Button__Root-sc-a3fg5q-2").click();
         $(".Button-module__button___WpJP1").click();
+        step.apiTest2();
     }
 
 
@@ -47,8 +52,8 @@ public class Login {
         $(".List-module__listOfCities____EgRr").$(".ListItem-module__container___ji0Cg", 2).click();
         $(".Header__AnimateToHiddenExtraLeftContainer-sc-1wbjs06-8").shouldHave(Condition.text("Limassol"));
 
-        $(".Popover__Root-sc-mo27do-0")
-                .shouldHave(Condition.text("You can change your delivery location here. Happy Wolting"));
+        //$(".Popover__Root-sc-mo27do-0")
+               // .shouldHave(Condition.text("You can change your delivery location here. Happy Wolting"));
     }
 
 

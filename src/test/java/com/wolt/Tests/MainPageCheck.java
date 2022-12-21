@@ -30,8 +30,18 @@ public class MainPageCheck extends Base {
 
     @Test
     void loginElementClick() {
-        $(".biJhpz").click();
-        $(".MethodSelect__Titles-sc-1bkm6bi-1").shouldHave(Condition.text("Create an account or log in"));
+        $(".TextButton__Root-sc-1r17c4e-0").click();
+        $$(".AuthModal__ScreenWrapper-sc-1u3qek0-0").find(Condition.text("Create an account or log in"))
+                .shouldHave(Condition.text("Create an account or log in"));
+     }
+
+
+    @Test
+    void loginElementClickNextutton() {
+        $(".TextButton__Root-sc-1r17c4e-0").click();
+        $$(".AuthModal__ScreenWrapper-sc-1u3qek0-0").find(Condition.text("Next"))
+                .shouldHave(Condition.text("Next"));
+        $(".Button__Root-sc-a3fg5q-2").shouldHave(Condition.attribute("role", "button"));
     }
 
     @Test
@@ -42,8 +52,9 @@ public class MainPageCheck extends Base {
 
     @Test
     void sighUpElementClick() {
-        $(".biJhpz").click();
-        $(".AuthModal__ScreenWrapper-sc-1u3qek0-0").shouldHave(Condition.text("Create an account or log in"));
+        $(".Button__Content-sc-a3fg5q-3").click();
+        $$(".AuthModal__ScreenWrapper-sc-1u3qek0-0").find(Condition.text("Create an account or log in"))
+                .shouldHave(Condition.text("Create an account or log in"));
     }
 
 

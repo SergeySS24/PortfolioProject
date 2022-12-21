@@ -195,7 +195,7 @@ public class DeliveryAddressPageCheck extends Base2 {
                 .when()
                 .get("https://wolt.com/en/discovery/category/cafe")
                 .then()
-                .body();
+                .statusCode(200);
     }
 
 
