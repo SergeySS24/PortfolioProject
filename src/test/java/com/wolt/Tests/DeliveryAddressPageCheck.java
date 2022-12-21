@@ -34,7 +34,6 @@ public class DeliveryAddressPageCheck extends Base2 {
 
     @Test
     void subNavigationDiscoveryElementCheck() {
-        //$(".DesktopDiscoveryTabLink__Label-sc-1qoyay1-1")
         $(".DesktopDiscoveryTabLink__Label-sc-1qoyay1-1").shouldHave(Condition.text("Discovery"));
         $(".DesktopDiscoveryTabLink__StyledNavLink-sc-1qoyay1-0").shouldHave(Condition.href("/en/discovery"));
         $(".iMVcLF").shouldHave(Condition.visible); //Discovery option is selected and filled by blue color
@@ -58,14 +57,14 @@ public class DeliveryAddressPageCheck extends Base2 {
 
 
     @Test
-    void bigGameMomentsLargeTileCheck() {
-        $$(".BlurHashVideo__StyledVideo-sc-t3c8ra-3").findBy(Condition.attribute("poster",
-                        "https://discovery-cdn.wolt.com/content_editor/banners/images/689725d4-6cc8-11ed-b583-3a784a7b0f18_3752e980_fd54_4d35_9d6b_b533166e78a8.png"))
-                .shouldHave(Condition.attribute("poster", "https://discovery-cdn.wolt.com/content_editor/banners/images/689725d4-6cc8-11ed-b583-3a784a7b0f18_3752e980_fd54_4d35_9d6b_b533166e78a8.png"));
+    void unlimitedFreeDekiveriesTileCheck() {
+        $$(".ImageWithBlurHashTransition__StyledImage-sc-58sbex-1").findBy(Condition.attribute("src",
+                        "https://imageproxy.wolt.com/wolt-frontpage-images/content_editor/banners/images/3ea4ab24-74bc-11ed-a0b9-5adf0be8436e_7955f2b0_f012_489d_8765_e8f3013bf7f4.png"))
+                .shouldHave(Condition.attribute("src", "https://imageproxy.wolt.com/wolt-frontpage-images/content_editor/banners/images/3ea4ab24-74bc-11ed-a0b9-5adf0be8436e_7955f2b0_f012_489d_8765_e8f3013bf7f4.png"));
     }
 
 
-
+    @Disabled
     @Test
     void pizzaHutLargeTileCheck(){
         $$(".BlurHashVideo__StyledVideo-sc-t3c8ra-3").findBy(Condition.attribute("poster",
@@ -166,7 +165,7 @@ public class DeliveryAddressPageCheck extends Base2 {
         $$(".LinkWithLocale__StyledLink-sc-1xr70lo-0").find(Condition.href("/en/discovery/category/cafe"))
                 .shouldHave(Condition.href("/en/discovery/category/cafe"));
         $$(".CategoryCardBody__Header-sc-1quwqfy-2").filterBy(Condition.text("Cafe")).shouldHave(CollectionCondition.texts("Cafe"));
-        $$(".CategoryCardBody__Description-sc-1quwqfy-3").filterBy(Condition.text("138 places")).shouldHave(CollectionCondition.texts("138 places"));
+        $$(".CategoryCardBody__Description-sc-1quwqfy-3").filterBy(Condition.text("141 places")).shouldHave(CollectionCondition.texts("141 places"));
     }
 
 
@@ -175,7 +174,7 @@ public class DeliveryAddressPageCheck extends Base2 {
         $$(".LinkWithLocale__StyledLink-sc-1xr70lo-0").find(Condition.href("/en/discovery/category/grocery"))
                 .shouldHave(Condition.href("/en/discovery/category/grocery"));
         $$(".CategoryCardBody__Header-sc-1quwqfy-2").filterBy(Condition.text("Grocery")).shouldHave(CollectionCondition.texts("Grocery"));
-        $$(".CategoryCardBody__Description-sc-1quwqfy-3").filterBy(Condition.text("32 places")).shouldHave(CollectionCondition.texts("32 places"));
+        $$(".CategoryCardBody__Description-sc-1quwqfy-3").filterBy(Condition.text("33 places")).shouldHave(CollectionCondition.texts("33 places"));
     }
 
 
@@ -186,16 +185,6 @@ public class DeliveryAddressPageCheck extends Base2 {
                         .shouldHave(Condition.attribute("src", "https://imageproxy.wolt.com/wolt-frontpage-images/cities/helsinki/sections/1ce76eac-fe99-11ec-9cce-4a7e419f12b8_nvfhjfg___copy.jpg"));
         $$(".CategoryCardBody__Header-sc-1quwqfy-2").filterBy(Condition.text("Kiosky's"))
                  .shouldHave(CollectionCondition.texts("Kiosky's"));
-    }
-
-
-    @Test
-    void apiTest() {
-        given()
-                .when()
-                .get("https://wolt.com/en/discovery/category/cafe")
-                .then()
-                .statusCode(200);
     }
 
 

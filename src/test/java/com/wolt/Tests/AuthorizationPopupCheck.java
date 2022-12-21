@@ -1,8 +1,6 @@
 package com.wolt.Tests;
 
-import com.codeborne.selenide.CollectionCondition;
 import com.codeborne.selenide.Condition;
-import com.codeborne.selenide.Selenide;
 import com.github.javafaker.Faker;
 import com.wolt.TestsSupport.Base;
 import org.junit.jupiter.api.Test;

@@ -10,6 +10,7 @@ import org.junit.jupiter.params.provider.EnumSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 
+import static com.codeborne.selenide.Selectors.byXpath;
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.WebDriverConditions.url;
 
@@ -37,7 +38,7 @@ public class MainPageCheck extends Base {
 
 
     @Test
-    void loginElementClickNextutton() {
+    void loginElementClickNextButton() {
         $(".TextButton__Root-sc-1r17c4e-0").click();
         $$(".AuthModal__ScreenWrapper-sc-1u3qek0-0").find(Condition.text("Next"))
                 .shouldHave(Condition.text("Next"));
@@ -61,12 +62,12 @@ public class MainPageCheck extends Base {
     @Test
     void searchBarElementCheck() {
         $(".CountryFrontHeroBanner-module__addressLabel___GPvr0").shouldHave(Condition.text("Delivery address"));
-        $(".Input__Label-sc-cy5jpp-4").shouldHave(Condition.text("Choose a delivery address"));
-        $(".Button-module__button___WpJP1").shouldHave(Condition.attribute("type", "button"));
-        $(".Button-module__button___WpJP1").shouldHave(Condition.text("Search"));
+        $(byXpath("//*[@id='mainContent']/div/div[1]/div/div[2]/div[2]/div/div/label")).shouldHave(Condition.text("Choose a delivery address"));
+//        $(".Button-module__button___WpJP1").shouldHave(Condition.attribute("type", "button"));
+//        $(".Button-module__button___WpJP1").shouldHave(Condition.text("Search"));
     }
 
-
+    @Disabled
     @Test
     void searchBarClick(){
         $(".Input__Root-sc-cy5jpp-1").click();
@@ -78,7 +79,7 @@ public class MainPageCheck extends Base {
 
     @Test
     void citiesHeading() {
-        $(".CitySelection-module__container___xXS1B").shouldHave(Condition.text("Explore cities where you find Wolt"));
+        $(byXpath("//*[@id='mainContent']/div/section")).shouldHave(Condition.text("Explore cities where you find Wolt"));
         $(".SideNav-module__sideNavigationTitle___BELWP").shouldHave(Condition.text("Cyprus"));
     }
 
@@ -137,7 +138,7 @@ public class MainPageCheck extends Base {
     void discoverBannerTextLink() {
         $(".HalfVideo__Container-sc-1oodkf4-1").scrollTo();
         $(".PlayButton__Text-sc-1dcwfel-0").click();
-        ///sleep(3000);
+        sleep(3000);
         $(".CloseButton-module__closeButton___cMirh").shouldBe(Condition.visible);
         $(".CloseButton-module__closeButton___cMirh").$(".CloseButton-module__icon___Y7DJn").click();
         $(".HalfVideo__Container-sc-1oodkf4-1").shouldBe(Condition.visible);
@@ -209,9 +210,9 @@ public class MainPageCheck extends Base {
         $(".Card__Root-sc-1wsaipe-0", 2).shouldHave(Condition.text("Enter a new chapter and find a job at Wolt"));
         $(".Card-module__img___NhWat", 2).shouldHave(Condition.attribute("style"));
         $(".LinkButton__StyledAnchor-sc-7867te-0", 2).shouldHave(Condition.text("Apply now"));
-        $(".LinkButton__StyledAnchor-sc-7867te-0", 2).shouldHave(Condition.href("/en/jobs"));
+        $(".LinkButton__StyledAnchor-sc-7867te-0", 2).shouldHave(Condition.href("https://careers.wolt.com"));
         $(".LinkButton__StyledAnchor-sc-7867te-0", 2).click();
-        webdriver().shouldHave(url("https://wolt.com/en/jobs"));
+        webdriver().shouldHave(url("https://careers.wolt.com/en"));
         Selenide.back();
     }
 
