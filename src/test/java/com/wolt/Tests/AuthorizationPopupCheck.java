@@ -1,5 +1,6 @@
 package com.wolt.Tests;
 
+import com.codeborne.selenide.CollectionCondition;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Selenide;
 import com.github.javafaker.Faker;
@@ -53,7 +54,7 @@ public class AuthorizationPopupCheck extends Base {
 
 
     @Test
-    void emailErrorMessageCheck() {
+    void emailErrorMessageCheck1() {
         $(".Button__Content-sc-a3fg5q-3").click();
         $("#method-select-email").setValue("dqwd");
         $$(".AuthModal__ScreenWrapper-sc-1u3qek0-0").find(Condition.text("Next"))
@@ -63,14 +64,27 @@ public class AuthorizationPopupCheck extends Base {
 
 
     @Test
+    void emailErrorMessageCheck2() {
+        $(".Button__Content-sc-a3fg5q-3").click();
+        $("#method-select-email").setValue("sergey.ss@fqwfwoe.ter").pressEnter();
+        sleep(5000);
+        $$(".Alert__Content-sc-kau7g8-12").find(Condition.text("Invalid parameters."))
+                .shouldHave(Condition.text("Invalid parameters."));
+    }
+
+
+    @Test
     void sendEmailCheck() {
         $(".Button__Content-sc-a3fg5q-3").click();
         $("#method-select-email").setValue(email).pressEnter();
-        $(".AuthModal__ScreenWrapper-sc-1u3qek0-0").shouldBe(Condition.visible);
         sleep(7000);
         $$(".AuthModal__ScreenWrapper-sc-1u3qek0-0").find(Condition.text("Great, check your inbox!"))
                 .shouldHave(Condition.text("Great, check your inbox!"));
-
-
+        $$(".Button__Root-sc-a3fg5q-2").find(Condition.text("Resend email"))
+                .shouldHave(Condition.text("Resend email"));
+        $(".EmailSent__SubTitle-sc-1yz7xhb-2")
+                .shouldHave(Condition.text("We've just sent a sign-in link to " + email +". Please check your spam folder in case you didn't get the email."));
+        $$(".Button__Root-sc-a3fg5q-2").find(Condition.attribute("type", "button"))
+                .shouldHave(Condition.attribute("type", "button"));
     }
 }
