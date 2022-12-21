@@ -9,6 +9,7 @@ import org.openqa.selenium.By;
 
 import static com.codeborne.selenide.Selectors.byXpath;
 import static com.codeborne.selenide.Selenide.*;
+import static io.restassured.RestAssured.given;
 
 public class DeliveryAddressPageCheck extends Base2 {
 
@@ -185,6 +186,16 @@ public class DeliveryAddressPageCheck extends Base2 {
                         .shouldHave(Condition.attribute("src", "https://imageproxy.wolt.com/wolt-frontpage-images/cities/helsinki/sections/1ce76eac-fe99-11ec-9cce-4a7e419f12b8_nvfhjfg___copy.jpg"));
         $$(".CategoryCardBody__Header-sc-1quwqfy-2").filterBy(Condition.text("Kiosky's"))
                  .shouldHave(CollectionCondition.texts("Kiosky's"));
+    }
+
+
+    @Test
+    void apiTest() {
+        given()
+                .when()
+                .get("https://wolt.com/en/discovery/category/cafe")
+                .then()
+                .body();
     }
 
 
