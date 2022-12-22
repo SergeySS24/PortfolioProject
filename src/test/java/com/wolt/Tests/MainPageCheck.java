@@ -1,8 +1,5 @@
 package com.wolt.Tests;
 
-import com.codeborne.selenide.CollectionCondition;
-import com.codeborne.selenide.Condition;
-import com.codeborne.selenide.Selenide;
 import com.wolt.TestsSupport.Base;
 import com.wolt.TestsSupport.Cities2;
 import com.wolt.TestsSupport.MainPageSupport;
@@ -12,7 +9,6 @@ import org.junit.jupiter.params.provider.EnumSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 
-import static com.codeborne.selenide.Selectors.byXpath;
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.WebDriverConditions.url;
 
