@@ -1,5 +1,6 @@
 package com.wolt.TestsSupport;
 
+import com.codeborne.selenide.CollectionCondition;
 import com.codeborne.selenide.Condition;
 import io.qameta.allure.Step;
 
@@ -272,16 +273,138 @@ public class MainPageSupport {
         return this;
     }
 
+    @Step ("Scroll to footer of the page")
+    public MainPageSupport footerScroll() {
+        $("#footer").scrollTo();
+        return this;
+    }
 
+    @Step ("Footer has Apple Store icon")
+    public MainPageSupport footerAppleStoreIcon() {
+        $(".Footer__AppLink-sc-1ki6z7e-11")
+                .shouldHave(Condition.href("https://wolt.onelink.me/Uy67?pid=not-available-web-to-app&c=not-available-" +
+                        "web-to-app&af_adset=not-available-web-to-app&af_keywords=not-available-web-to-app&af_sub1=not-" +
+                        "available-web-to-app&af_sub2=%2Fen%2Fcyp&af_r=https%3A%2F%2Fitunes.apple.com%2Ffi%2Fapp%2Fwolt%2Fid943905271%3Fmt%3D8"));
+        return this;
+    }
 
+    @Step ("Footer has Apple Store icon title")
+    public MainPageSupport footerAppleStoreIconTitle(String title) {
+        $(".Footer__AppLink-sc-1ki6z7e-11").shouldHave(Condition.attribute("title",
+                title));
+        return this;
+    }
 
+    @Step ("Footer has Google Play icon")
+    public MainPageSupport footerGooglePlayIcon() {
+        $(".Footer__AppLink-sc-1ki6z7e-11", 1)
+                .shouldHave(Condition.href("https://wolt.onelink.me/Uy67?pid=not-available-web-to-app&c=not-available-" +
+                        "web-to-app&af_adset=not-available-web-to-app&af_keywords=not-available-web-to-app&af_sub1=not-" +
+                        "available-web-to-app&af_sub2=%2Fen%2Fcyp&af_r=https%3A%2F%2Fplay.google.com%2Fstore%2Fapps%2Fdetails%3Fid%3Dcom.wolt.android"));
+        return this;
+    }
 
+    @Step ("Footer has Google Play icon title")
+    public MainPageSupport footerGooglePlayIconTitle(String title) {
+        $(".Footer__AppLink-sc-1ki6z7e-11", 1).shouldHave(Condition.attribute("title", title));
+        return this;
+    }
 
+    @Step ("First footer column heading")
+    public MainPageSupport footerFirstColumnHeading(String heading) {
+        $("#FooterLinkGroup-Title-1").shouldHave(Condition.text(heading));
+        return this;
+    }
 
+    @Step ("First footer column content")
+    public MainPageSupport footerFirstColumContent(String testData) {
+        $(".FooterLinkGroup__Content-sc-1vexfqi-2").shouldHave(Condition.text(testData));
+        return this;
+    }
 
+    @Step ("'For countries' link check")
+    public MainPageSupport forCountriesLinkCheck(String link) {
+        $(".Footer__Link-sc-1ki6z7e-18").shouldHave(Condition.href(link));
+        return this;
+    }
 
+    @Step ("'For restaurants' link check")
+    public MainPageSupport forRestaurantsLinkCheck(String link) {
+        $(".Footer__Link-sc-1ki6z7e-18", 1).shouldHave(Condition.href(link));
+        return this;
+    }
 
+    @Step ("'For stores' link check")
+    public MainPageSupport forStoresLinkCheck(String link) {
+        $(".Footer__Link-sc-1ki6z7e-18", 2).shouldHave(Condition.href(link));
+        return this;
+    }
 
+    @Step ("'For companies' link check")
+    public MainPageSupport forCompaniesLinkCheck(String link) {
+        $(".Footer__Link-sc-1ki6z7e-18", 3).shouldHave(Condition.href(link));
+        return this;
+    }
+
+    @Step ("'Wolt drive' link check")
+    public MainPageSupport woltDriveLinkCheck(String link) {
+        $(".Footer__Link-sc-1ki6z7e-18", 4).shouldHave(Condition.href(link));
+        return this;
+    }
+
+    @Step ("Second footer column heading")
+    public MainPageSupport footerSecondColumnHeading(String heading) {
+        $("#FooterLinkGroup-Title-2").shouldHave(Condition.text(heading));
+        return this;
+    }
+
+    @Step ("Second footer column content")
+    public MainPageSupport footerSecondColumContent(String testData) {
+        $(".FooterLinkGroup__Content-sc-1vexfqi-2", 1).shouldHave(Condition.text(testData));
+        return this;
+    }
+
+    @Step ("Third footer column heading")
+    public MainPageSupport footerThirdColumnHeading(String heading) {
+        $("#FooterLinkGroup-Title-3").shouldHave(Condition.text(heading));
+        return this;
+    }
+
+    @Step ("Third footer column content")
+    public MainPageSupport footerThirdColumContent(String testData) {
+        $(".FooterLinkGroup__Content-sc-1vexfqi-2", 2).shouldHave(Condition.text(testData));
+        return this;
+    }
+
+    @Step ("Fourth footer column heading")
+    public MainPageSupport footerFourthColumnHeading(String heading) {
+        $("#FooterLinkGroup-Title-4").shouldHave(Condition.text(heading));
+        return this;
+    }
+
+    @Step ("Third footer column content")
+    public MainPageSupport footerFourthColumContent(String testData) {
+        $(".FooterLinkGroup__Content-sc-1vexfqi-2", 3).shouldHave(Condition.text(testData));
+        return this;
+    }
+
+    @Step ("Left bottom bar elements")
+    public MainPageSupport leftBottomBarElements(String text1, String text2, String text3) {
+        $$(".FooterSettingButton__Root-sc-1nledng-0").shouldHave(CollectionCondition.texts(text1, text2, text3));
+        return this;
+    }
+
+    @Step ("Right bottom bar elements")
+    public MainPageSupport rightBottomBarElements(String text1, String text2, String text3) {
+        $$(".Footer__BottomLink-sc-1ki6z7e-7").shouldHave(CollectionCondition.texts(text1, text2, text3));
+        return this;
+    }
+
+    @Step ("Bottom stamp")
+    public MainPageSupport bottomStamp(String stamp) {
+        $(".Footer__Attribution-sc-1ki6z7e-8").shouldHave(Condition.text(stamp));
+        return this;
+    }
 
 
 

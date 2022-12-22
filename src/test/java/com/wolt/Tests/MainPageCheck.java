@@ -1,5 +1,6 @@
 package com.wolt.Tests;
 
+import com.codeborne.selenide.CollectionCondition;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Selenide;
 import com.wolt.TestsSupport.Base;
@@ -144,41 +145,25 @@ public class MainPageCheck extends Base {
     @Test
     void suggestionSection3() {
         step.suggestionSectionScroll()
-
-
-
-
-        $(".CardRow__Title-sc-36zoul-1").scrollTo();
-        $(".Card__Root-sc-1wsaipe-0", 2).shouldHave(Condition.text("Enter a new chapter and find a job at Wolt"));
-        $(".Card-module__img___NhWat", 2).shouldHave(Condition.attribute("style"));
-        $(".LinkButton__StyledAnchor-sc-7867te-0", 2).shouldHave(Condition.text("Apply now"));
-        $(".LinkButton__StyledAnchor-sc-7867te-0", 2).shouldHave(Condition.href("https://careers.wolt.com"));
-        $(".LinkButton__StyledAnchor-sc-7867te-0", 2).click();
-        webdriver().shouldHave(url("https://careers.wolt.com/en"));
-        Selenide.back();
+                .suggestionSection3Text("Enter a new chapter and find a job at Wolt")
+                .suggestionSection3ApplyNow("Apply now")
+                .suggestionSection3ApplyLink("https://careers.wolt.com")
+                .status200Link("https://careers.wolt.com/en");
     }
 
     @Test
     void footerAppStoreCheck() {
-        $("#footer").scrollTo();
-        $(".Footer__AppLink-sc-1ki6z7e-11")
-                .shouldHave(Condition.href("https://wolt.onelink.me/Uy67?pid=not-available-web-to-app&c=not-available-" +
-                        "web-to-app&af_adset=not-available-web-to-app&af_keywords=not-available-web-to-app&af_sub1=not-" +
-                        "available-web-to-app&af_sub2=%2Fen%2Fcyp&af_r=https%3A%2F%2Fitunes.apple.com%2Ffi%2Fapp%2Fwolt%2Fid943905271%3Fmt%3D8"));
-        $(".Footer__AppLink-sc-1ki6z7e-11").shouldHave(Condition.attribute("title",
-                "Download the Wolt iOS app on the App Store"));
+        step.footerScroll()
+                .footerAppleStoreIcon()
+                .footerAppleStoreIconTitle("Download the Wolt iOS app on the App Store");
     }
 
 
     @Test
     void footerGooglePlayCheck() {
-        $("#footer").scrollTo();
-        $(".Footer__AppLink-sc-1ki6z7e-11", 1)
-                .shouldHave(Condition.href("https://wolt.onelink.me/Uy67?pid=not-available-web-to-app&c=not-available-" +
-                        "web-to-app&af_adset=not-available-web-to-app&af_keywords=not-available-web-to-app&af_sub1=not-" +
-                        "available-web-to-app&af_sub2=%2Fen%2Fcyp&af_r=https%3A%2F%2Fplay.google.com%2Fstore%2Fapps%2Fdetails%3Fid%3Dcom.wolt.android"));
-        $(".Footer__AppLink-sc-1ki6z7e-11", 1).shouldHave(Condition.attribute("title",
-                "Download the Wolt Android app on Google Play"));
+        step.footerScroll()
+                .footerGooglePlayIcon()
+                .footerGooglePlayIconTitle("Download the Wolt Android app on Google Play");
     }
 
 
@@ -191,23 +176,26 @@ public class MainPageCheck extends Base {
             "Wolt Drive"
     })
 
-    @ParameterizedTest(name = "checking first footer colomn for word {0}")
+    @ParameterizedTest(name = "checking first footer column for word {0}")
     void firstFooterColumnCheck(String testData) {
-        $("#footer").scrollTo();
-        $("#FooterLinkGroup-Title-1").shouldHave(Condition.text("Let's do this together"));
-
-        $(".FooterLinkGroup__Content-sc-1vexfqi-2").shouldHave(Condition.text(testData));
+        step.footerScroll()
+                .footerFirstColumnHeading("Let's do this together")
+                .footerFirstColumContent(testData);
     }
 
-
     @Test
-    void firstFooterColomnLinkCheck() {
-        $("#footer").scrollTo();
-        $(".Footer__Link-sc-1ki6z7e-18").shouldHave(Condition.href("https://explore.wolt.com/en/cyp/couriers"));
-        $(".Footer__Link-sc-1ki6z7e-18", 1).shouldHave(Condition.href("/en/merchants"));
-        $(".Footer__Link-sc-1ki6z7e-18", 2).shouldHave(Condition.href("/en/retailers"));
-        $(".Footer__Link-sc-1ki6z7e-18", 3).shouldHave(Condition.href("/en/wolt-at-work"));
-        $(".Footer__Link-sc-1ki6z7e-18", 4).shouldHave(Condition.href("/en/drive"));
+    void firstFooterColumnLinkCheck() {
+        step.footerScroll()
+                .forCountriesLinkCheck("https://explore.wolt.com/en/cyp/couriers")
+                .status200Link("https://explore.wolt.com/en/cyp/couriers")
+                .forRestaurantsLinkCheck("/en/merchants")
+                .status200Link("https://wolt.com/en/merchants")
+                .forStoresLinkCheck("/en/retailers")
+                .status200Link("https://wolt.com/en/retailers")
+                .forCompaniesLinkCheck("/en/wolt-at-work")
+                .status200Link("https://wolt.com/en/wolt-at-work")
+                .woltDriveLinkCheck("/en/drive")
+                .status200Link("https://wolt.com/en/drive");
     }
 
 
@@ -222,10 +210,9 @@ public class MainPageCheck extends Base {
 
     @ParameterizedTest(name = "checking second footer column for word {0}")
     void secondFooterColumnCheck(String testData) {
-        $("#footer").scrollTo();
-        $("#FooterLinkGroup-Title-2").shouldHave(Condition.text("Company"));
-
-        $(".FooterLinkGroup__Content-sc-1vexfqi-2", 1).shouldHave(Condition.text(testData));
+        step.footerScroll()
+                .footerSecondColumnHeading("Company")
+                .footerSecondColumContent(testData);
     }
 
 
@@ -238,10 +225,9 @@ public class MainPageCheck extends Base {
 
     @ParameterizedTest(name = "checking third footer column for word {0}")
     void thirdFooterColumnCheck(String testData) {
-        $("#footer").scrollTo();
-        $("#FooterLinkGroup-Title-3").shouldHave(Condition.text("Useful links"));
-
-        $(".FooterLinkGroup__Content-sc-1vexfqi-2", 2).shouldHave(Condition.text(testData));
+        step.footerScroll()
+                .footerThirdColumnHeading("Useful links")
+                .footerThirdColumContent(testData);
     }
 
 
@@ -257,32 +243,30 @@ public class MainPageCheck extends Base {
 
     @ParameterizedTest(name = "checking fourth footer column for word {0}")
     void fourthFooterColumnCheck(String testData) {
-        $("#footer").scrollTo();
-        $("#FooterLinkGroup-Title-4").shouldHave(Condition.text("Follow us"));
-
-        $(".FooterLinkGroup__Content-sc-1vexfqi-2", 3).shouldHave(Condition.text(testData));
+        step.footerScroll()
+                .footerFourthColumnHeading("Follow us")
+                .footerFourthColumContent(testData);
     }
 
 
     @Test
     void bottomBarOne() {
-        $("#footer").scrollTo();
-        $(".FooterSettingButton__Root-sc-1nledng-0").shouldHave(Condition.text("Cyprus"));
-        $(".FooterSettingButton__Root-sc-1nledng-0", 1).shouldHave(Condition.text("English"));
-        $(".FooterSettingButton__Root-sc-1nledng-0", 2).shouldHave(Condition.text("Accessibility"));
+        step.footerScroll()
+                .leftBottomBarElements("Cyprus", "English", "Accessibility");
     }
 
 
     @Test
     void bottomBarTwo() {
-        $("#footer").scrollTo();
-        $(".Footer__BottomLink-sc-1ki6z7e-7").shouldHave(Condition.text("Accessibility Statement"));
-        $(".Footer__BottomLink-sc-1ki6z7e-7", 1).shouldHave(Condition.text("Terms and Conditions"));
-        $(".Footer__BottomLink-sc-1ki6z7e-7", 2).shouldHave(Condition.text("Privacy Policy"));
-
-        $(".Footer__Attribution-sc-1ki6z7e-8").shouldHave(Condition.text("©️ Wolt 2014–2022"));
+        step.footerScroll()
+                .rightBottomBarElements("Accessibility Statement", "Terms and Conditions", "Privacy Policy");
     }
 
+    @Test
+    void bottomStamp() {
+        step.footerScroll()
+                .bottomStamp("©️ Wolt 2014–2022");
+    }
 }
 
 
