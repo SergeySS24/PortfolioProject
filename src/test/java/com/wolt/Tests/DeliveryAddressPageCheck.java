@@ -1,8 +1,12 @@
 package com.wolt.Tests;
 
+import com.codeborne.selenide.Condition;
 import com.wolt.TestsSupport.Base2;
 import com.wolt.TestsSupport.DeliveryAddressPageSupport;
 import org.junit.jupiter.api.Test;
+
+import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.$$;
 
 
 public class DeliveryAddressPageCheck extends Base2 {
