@@ -4,6 +4,7 @@ import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Selenide;
 import com.wolt.TestsSupport.Base;
 import com.wolt.TestsSupport.Cities2;
+import com.wolt.TestsSupport.MainPageSupport;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.EnumSource;
@@ -16,55 +17,47 @@ import static com.codeborne.selenide.WebDriverConditions.url;
 
 public class MainPageCheck extends Base {
 
+    MainPageSupport step = new MainPageSupport();
 
     @Test
     void woltLogoClick() {
-        $(".MainHeader__LogoLink-sc-5qxwnz-2").click();
+        step.logoClick()
+                .mainPageLinkStatus200("https://wolt.com/en/discovery");
         webdriver().shouldHave(url("https://wolt.com/en/discovery"));
     }
 
     @Test
     void loginElementPresent() {
-        $(".MainHeader__RightCol-sc-5qxwnz-5")
-                .shouldHave(Condition.text("Log in"));
+        step.authorizationSection("Log in");
     }
 
     @Test
     void loginElementClick() {
-        $(".TextButton__Root-sc-1r17c4e-0").click();
-        $$(".AuthModal__ScreenWrapper-sc-1u3qek0-0").find(Condition.text("Create an account or log in"))
-                .shouldHave(Condition.text("Create an account or log in"));
+        step.logInClick()
+                .authorizationPopup("Create an account or log in")
+                .authorizationPopup("Next")
+                .nextButton();
      }
 
 
     @Test
-    void loginElementClickNextButton() {
-        $(".TextButton__Root-sc-1r17c4e-0").click();
-        $$(".AuthModal__ScreenWrapper-sc-1u3qek0-0").find(Condition.text("Next"))
-                .shouldHave(Condition.text("Next"));
-        $(".Button__Root-sc-a3fg5q-2").shouldHave(Condition.attribute("role", "button"));
-    }
-
-    @Test
     void signUpElementPresent() {
-        $(".biJhpz")
-                .shouldHave(Condition.text("Sign up"));
+        step.authorizationSection("Sign up");
     }
 
     @Test
     void sighUpElementClick() {
-        $(".Button__Content-sc-a3fg5q-3").click();
-        $$(".AuthModal__ScreenWrapper-sc-1u3qek0-0").find(Condition.text("Create an account or log in"))
-                .shouldHave(Condition.text("Create an account or log in"));
+        step.signUpButtonClick()
+                .authorizationPopup("Create an account or log in")
+                .authorizationPopup("Next")
+                .nextButton();
     }
 
 
     @Test
     void searchBarElementCheck() {
-        $(".CountryFrontHeroBanner-module__addressLabel___GPvr0").shouldHave(Condition.text("Delivery address"));
-        $(byXpath("//*[@id='mainContent']/div/div[1]/div/div[2]/div[2]/div/div/label")).shouldHave(Condition.text("Choose a delivery address"));
-//        $(".Button-module__button___WpJP1").shouldHave(Condition.attribute("type", "button"));
-//        $(".Button-module__button___WpJP1").shouldHave(Condition.text("Search"));
+        step.searchFieldHeading("Delivery address")
+                .searchField("Delivery address");
     }
 
     @Disabled
