@@ -53,34 +53,23 @@ public class MainPageCheck extends Base {
                 .nextButton();
     }
 
-
     @Test
     void searchBarElementCheck() {
         step.searchFieldHeading("Delivery address")
                 .searchField("Delivery address");
     }
 
-    @Disabled
-    @Test
-    void searchBarClick(){
-        $(".Input__Root-sc-cy5jpp-1").click();
-        $(".Popover__Content-sc-mo27do-2").shouldHave(Condition.text("Use my current location"));
-        $(".Button-module__button___WpJP1").click();
-        $(".Popover__Content-sc-mo27do-2").shouldHave(Condition.text("Use my current location"));
-    }
-
-
     @Test
     void citiesHeading() {
-        $(byXpath("//*[@id='mainContent']/div/section")).shouldHave(Condition.text("Explore cities where you find Wolt"));
-        $(".SideNav-module__sideNavigationTitle___BELWP").shouldHave(Condition.text("Cyprus"));
+        step.exploreCitiesHeading("Explore cities where you find Wolt")
+                        .selectedCountrtDisplay("Cyprus");
     }
 
 
     @EnumSource(Cities2.class)
     @ParameterizedTest(name = "Checking all cities on the main page")
     void checkCities(Cities2 allCities) {
-        $$(".CitySelection-module__contentWrapper___BWfyh").find(Condition.text(allCities.city)).shouldBe(Condition.visible);
+        step.allCitiesSection(allCities.city);
     }
 
 

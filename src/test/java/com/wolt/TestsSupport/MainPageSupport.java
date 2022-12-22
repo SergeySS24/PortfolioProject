@@ -69,12 +69,23 @@ public class MainPageSupport {
         return this;
     }
 
+    @Step ("'Explore citied' heading")
+    public MainPageSupport exploreCitiesHeading(String text) {
+        $(byXpath("//*[@id='mainContent']/div/section")).shouldHave(Condition.text(text));
+        return this;
+    }
 
+    @Step ("Displaying selected country")
+    public MainPageSupport selectedCountrtDisplay(String country) {
+        $(".SideNav-module__sideNavigationTitle___BELWP").shouldHave(Condition.text(country));
+        return this;
+    }
 
-
-
-
-
+    @Step ("Section with all cities")
+    public MainPageSupport allCitiesSection(String city) {
+        $$(".CitySelection-module__contentWrapper___BWfyh").find(Condition.text(city)).shouldBe(Condition.visible);
+        return this;
+    }
 
 
 
