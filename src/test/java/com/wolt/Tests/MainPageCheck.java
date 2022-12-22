@@ -22,7 +22,7 @@ public class MainPageCheck extends Base {
     @Test
     void woltLogoClick() {
         step.logoClick()
-                .mainPageLinkStatus200("https://wolt.com/en/discovery");
+                .status200Link("https://wolt.com/en/discovery");
         webdriver().shouldHave(url("https://wolt.com/en/discovery"));
     }
 
@@ -62,7 +62,7 @@ public class MainPageCheck extends Base {
     @Test
     void citiesHeading() {
         step.exploreCitiesHeading("Explore cities where you find Wolt")
-                        .selectedCountrtDisplay("Cyprus");
+                .selectedCountrtDisplay("Cyprus");
     }
 
 
@@ -72,122 +72,82 @@ public class MainPageCheck extends Base {
         step.allCitiesSection(allCities.city);
     }
 
-
     @Test
     void discoverBannerCheckHeadingPictureVideo() {
-        $(".HalfVideo__Container-sc-1oodkf4-1").scrollTo().shouldHave(Condition.text("What is Wolt?"));
-        $(".HalfVideo__Container-sc-1oodkf4-1").shouldHave(Condition.text("Delivered."));
-        $(".HalfVideo__Container-sc-1oodkf4-1").shouldHave(Condition.text("Wolt makes it incredibly easy for"));
-        $(".PlayButton-module__icon___HZW3O").$(".PlayButton-module__playIcon___bd0jC")
-                .shouldHave(Condition.attribute("xmlns", "http://www.w3.org/2000/svg"));
-        $(".PlayButton__Text-sc-1dcwfel-0").shouldHave(Condition.text("Watch video"));
-        $(".HalfVideo-module__video___lQp97")
-                .shouldHave(Condition.attribute("poster",
-                        "https://consumer-static-assets.wolt.com/frontpage-assets/video-cover-image-4.jpg"));
-        $(".HalfVideo-module__video___lQp97")
-                .shouldHave(Condition.attribute("src",
-                        "https://consumer-static-assets.wolt.com/frontpage-assets/Wolt_Brand_Film_2020.mp4"));
+        step.videoContainerScroll()
+                .videoContainer("What is Wolt?")
+                .videoContainer("Delivered.")
+                .videoContainer("Wolt makes it incredibly easy for")
+                .playButtonText("Watch video")
+                .videoContainerJpgPoster("https://consumer-static-assets.wolt.com/frontpage-assets/video-cover-image-4.jpg")
+                .videoContainerMp4Video("https://consumer-static-assets.wolt.com/frontpage-assets/Wolt_Brand_Film_2020.mp4");;
     }
-
 
     @Test
-    void discoverBannerPlayButtonXbuttonPresent() { //Нужен ли этот тест?
-        $(".HalfVideo__Container-sc-1oodkf4-1").scrollTo();
-        $(".PlayButton-module__icon___HZW3O").click();
+    void discoverBannerPlayButtonXbuttonPresent() {
+        step.videoContainerScroll()
+                .playButtonClick();
         sleep(1000);
-        $(".CloseButton-module__closeButton___cMirh").$(".CloseButton-module__closeIcon___vPEhM")
-                .shouldHave(Condition.attribute("xmlns", "http://www.w3.org/2000/svg"));
+                step.closeButtonPresent();
     }
-
 
     @Test
     void discoverBannerPlayButtonClick() {
-        $(".HalfVideo__Container-sc-1oodkf4-1").scrollTo();
-        $(".PlayButton-module__icon___HZW3O").click();
-        $(".CloseButton-module__closeButton___cMirh").shouldBe(Condition.visible);
-        $(".CloseButton-module__closeButton___cMirh").$(".CloseButton-module__icon___Y7DJn").click();
-        $(".HalfVideo__Container-sc-1oodkf4-1").shouldBe(Condition.visible);
-        $(".HalfVideo__Container-sc-1oodkf4-1").shouldHave(Condition.text("What is Wolt?"));
-        $(".HalfVideo__Container-sc-1oodkf4-1").shouldHave(Condition.text("Delivered."));
-        $(".HalfVideo__Container-sc-1oodkf4-1").shouldHave(Condition.text("Wolt makes it incredibly easy for"));
-        $(".PlayButton-module__icon___HZW3O").$(".PlayButton-module__playIcon___bd0jC")
-                .shouldHave(Condition.attribute("xmlns", "http://www.w3.org/2000/svg"));
-        $(".PlayButton__Text-sc-1dcwfel-0").shouldHave(Condition.text("Watch video"));
+        step.videoContainerScroll()
+                .playButtonClick()
+                .closeButtonVisible()
+                .closeButtonClick()
+                .videoContainerVisible()
+                .videoContainer("What is Wolt?")
+                .videoContainer("Delivered.")
+                .videoContainer("Wolt makes it incredibly easy for")
+                .playButtonText("Watch video");
     }
-
-
-    @Test
-    void discoverBannerTextLink() {
-        $(".HalfVideo__Container-sc-1oodkf4-1").scrollTo();
-        $(".PlayButton__Text-sc-1dcwfel-0").click();
-        sleep(3000);
-        $(".CloseButton-module__closeButton___cMirh").shouldBe(Condition.visible);
-        $(".CloseButton-module__closeButton___cMirh").$(".CloseButton-module__icon___Y7DJn").click();
-        $(".HalfVideo__Container-sc-1oodkf4-1").shouldBe(Condition.visible);
-        $(".HalfVideo__Container-sc-1oodkf4-1").shouldHave(Condition.text("What is Wolt?"));
-        $(".HalfVideo__Container-sc-1oodkf4-1").shouldHave(Condition.text("Delivered."));
-        $(".HalfVideo__Container-sc-1oodkf4-1").shouldHave(Condition.text("Wolt makes it incredibly easy for"));
-        $(".PlayButton-module__icon___HZW3O").$(".PlayButton-module__playIcon___bd0jC")
-                .shouldHave(Condition.attribute("xmlns", "http://www.w3.org/2000/svg"));
-        $(".PlayButton__Text-sc-1dcwfel-0").shouldHave(Condition.text("Watch video"));
-    }
-
 
     @Test
     void middleTextModule() {
-        $(".TitleText-module__container___dWvWp").scrollTo();
-        $(".TitleText-sc-1njwnfm-0").shouldHave(Condition.text("Did you know?"));
-        $(".TitleText-sc-1njwnfm-0").shouldHave(Condition.text("Getting home-delivered sushi is more than"));
+        step.middleTextModuleScroll()
+                .middleTextModuleText("Did you know?")
+                .middleTextModuleText("Getting home-delivered sushi is more than");
     }
-
 
     @Test
     void interactiveMiddleModule() {
-        $(".GetWolt-module__root___k50dq").scrollTo().shouldHave(Condition.text("Honey, we’re not cooking tonight"));
-        $(".GetWolt-module__content___r26Er").shouldHave(Condition.text("Get the Apple-awarded Wolt app and choose from 40,000"));
-        $(".GetWolt-module__platformBadge___WDUQa")
-                .shouldHave(Condition.href("https://wolt.onelink.me/Uy67?pid=not-available-web-to-app&c=not-available-" +
-                        "web-to-app&af_adset=not-available-web-to-app&af_keywords=" +
-                        "not-available-web-to-app&af_sub1=not-available-web-to-app&af_sub2=%2Fen%2Fcyp&af_r=https%3A%2F%2Fitunes" +
-                        ".apple.com%2Ffi%2Fapp%2Fwolt%2Fid943905271%3Fmt%3D8"));
-        $(".GetWolt-module__platformBadge___WDUQa", 1)
-                .shouldHave(Condition.href("https://wolt.onelink.me/Uy67?pid=not-available-web-to-app&c=not-available" +
-                        "-web-to-app&af_adset=not-available-web-to-app&af_keywords=not-available-web-to-app&af_sub1=not" +
-                        "-available-web-to-app&af_sub2=%2Fen%2Fcyp&af_r=https%3A%2F%2Fplay.google.com%2" +
-                        "Fstore%2Fapps%2Fdetails%3Fid%3Dcom.wolt.android"));
-        $(".GetWolt-module__phonesImage___vGI3v")
-                .shouldHave(Condition.attribute("src", "https://consumer-static-assets.wolt.com/frontpage-assets/front-cells.png"));
+        step.interactiveModuleScroll()
+                .interactiveModuleHeading("Honey, we’re not cooking tonight")
+                .interactiveModuleText("Get the Apple-awarded Wolt app and choose from 40,000")
+                .interactiveModuleAppleStoreLink()
+                .interactiveModuleGooglePlayLink()
+                .interactiveModuleBackground()
+                .status200Link("https://consumer-static-assets.wolt.com/frontpage-assets/front-cells.png");
     }
-
 
     @Test
     void suggestionSection1() {
-        $(".CardRow__Title-sc-36zoul-1").scrollTo().shouldHave(Condition.text("Hungry for more than food?"));
-        $(".Card-module__img___NhWat").shouldHave(Condition.attribute("style"));
-        $(".Card-module__pad___nryOm").shouldHave(Condition.text("Get paid as a courier partner"));
-        $(".LinkButton__StyledAnchor-sc-7867te-0").shouldHave(Condition.text("Apply now"));
-        $(".LinkButton__StyledAnchor-sc-7867te-0").shouldHave(Condition.href("https://explore.wolt.com/en/cyp/couriers"));
-        $(".LinkButton__StyledAnchor-sc-7867te-0").click();
-        webdriver().shouldHave(url("https://explore.wolt.com/en/cyp/couriers"));
-        Selenide.back();
+        step.suggestionSectionScroll()
+                .suggestionSectionHeading("Hungry for more than food?")
+                .suggestionSection1Text("Get paid as a courier partner")
+                .suggestionSection1ApplyNow("Apply now")
+                .suggestionSection1ApplyLink("https://explore.wolt.com/en/cyp/couriers")
+                .status200Link("https://explore.wolt.com/en/cyp/couriers");
     }
-
 
     @Test
     void suggestionSection2() {
-        $(".CardRow__Title-sc-36zoul-1").scrollTo();
-        $(".Card__Root-sc-1wsaipe-0", 1).shouldHave(Condition.text("Serve more people as a restaurant partner"));
-        $(".Card-module__img___NhWat", 1).shouldHave(Condition.attribute("style"));
-        $(".LinkButton__StyledAnchor-sc-7867te-0", 1).shouldHave(Condition.text("Apply now"));
-        $(".LinkButton__StyledAnchor-sc-7867te-0", 1).shouldHave(Condition.href("/en/merchants"));
-        $(".LinkButton__StyledAnchor-sc-7867te-0", 1).click();
-        webdriver().shouldHave(url("https://wolt.com/en/merchants"));
-        Selenide.back();
+        step.suggestionSectionScroll()
+                .suggestionSection2Text("Serve more people as a restaurant partner")
+                .suggestionSection2ApplyNow("Apply now")
+                .suggestionSection2ApplyLink("/en/merchants")
+                .status200Link("https://wolt.com/en/merchants");
     }
-
 
     @Test
     void suggestionSection3() {
+        step.suggestionSectionScroll()
+
+
+
+
         $(".CardRow__Title-sc-36zoul-1").scrollTo();
         $(".Card__Root-sc-1wsaipe-0", 2).shouldHave(Condition.text("Enter a new chapter and find a job at Wolt"));
         $(".Card-module__img___NhWat", 2).shouldHave(Condition.attribute("style"));
