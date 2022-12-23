@@ -166,6 +166,40 @@ public class RestaurantCheckSupport {
         return this;
     }
 
+    @Step ("Verifying restaurant information")
+    public RestaurantCheckSupport restaurantInformationSection(String address, String postcode) {
+        $$(".VenueSideInfo__Root-sc-1bpnd7a-0").find(Condition.text("Restaurant information"))
+                .shouldHave(Condition.text("Restaurant information"));
+        $$(".VenueSideInfo__SectionTitle-sc-1bpnd7a-3").find(Condition.text("Address"))
+                .shouldHave(Condition.text("Address"));
+        $$(".VenueSideInfo__Block-sc-1bpnd7a-1").find(Condition.text(address)).shouldHave(Condition.text(address));
+        $$(".VenueSideInfo__Block-sc-1bpnd7a-1").find(Condition.text(postcode)).shouldHave(Condition.text(postcode));
+        $$(".VenueSideInfo__SectionTitle-sc-1bpnd7a-3").find(Condition.text("Opening times"))
+                .shouldHave(Condition.text("Opening times"));
+        return this;
+    }
+
+    @Step ("Set value to the search field")
+    public RestaurantCheckSupport searchFieldSetValue(String value) {
+        $(".SearchField-module__input___fS6Zk").setValue(value);
+        return this;
+    }
+
+    @Step ("Check found item section")
+    public RestaurantCheckSupport checkFoundItemSection(String item) {
+        $$(".Venue-module__menu___E3Uyw").find(Condition.text(item)).shouldHave(Condition.text(item));
+        $$(".Venue-module__categories___Lp8Or")
+                .find(Condition.text(item)).shouldHave(Condition.text(item));
+        return this;
+    }
+
+    @Step ("Check found item card")
+    public RestaurantCheckSupport checkFoundItemCard(String item) {
+        $$(".MenuItem-module__itemContainer____1T8k").find(Condition.text(item)).shouldHave(Condition.text(item));
+        $(".MenuItem-module__toggle___iTf9H").shouldHave(Condition.href("/en/cyp/limassol/restaurant/the-smuggers/pineapple-dreams-itemid-635f6b8bc76974bc0607abef"));
+        return this;
+    }
+
 
 
 

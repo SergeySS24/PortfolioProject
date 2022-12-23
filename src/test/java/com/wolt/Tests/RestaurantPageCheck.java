@@ -68,7 +68,6 @@ public class RestaurantPageCheck extends Base3 {
         step.listItemCheck("WRAPS");
     }
 
-
     @Test
     void openDessertsSection() {
         step.openDessertCategory("DESSERTS")
@@ -83,7 +82,6 @@ public class RestaurantPageCheck extends Base3 {
         api.status200Check("https://wolt.com/en/cyp/limassol/restaurant/the-smuggers/halva-brownie-itemid-638f18c0d786bf1cf72f49c7");
     }
 
-
     @Test
     void productOpenCheck() {
         step.openDessertCategory("DESSERTS")
@@ -94,27 +92,16 @@ public class RestaurantPageCheck extends Base3 {
                 .productInfoContents("Milk Chocolate Cookie");
     }
 
-
     @Test
     void restaurantInformation() {
-
-
-        $$(".VenueSideInfo__Root-sc-1bpnd7a-0").find(Condition.text("Restaurant information"))
-                .shouldHave(Condition.text("Restaurant information"));
-        $$(".VenueSideInfo__SectionTitle-sc-1bpnd7a-3").find(Condition.text("Address"))
-                .shouldHave(Condition.text("Address"));
-        $$(".VenueSideInfo__SectionTitle-sc-1bpnd7a-3").find(Condition.text("Opening times"))
-                .shouldHave(Condition.text("Opening times"));
+        step.restaurantInformationSection("Platonos 7", "3027");
     }
-
 
     @Test
     void searchItem() {
-        $(".SearchField-module__input___fS6Zk").setValue("Pineapple Dreams");
-        $$(".Venue-module__menu___E3Uyw").find(Condition.text("CHICKEN BURGERS")).shouldHave(Condition.text("CHICKEN BURGERS"));
-        $$(".Venue-module__categories___Lp8Or")
-                .find(Condition.text("CHICKEN BURGERS")).shouldHave(Condition.text("CHICKEN BURGERS"));
-        $$(".MenuItem-module__itemContainer____1T8k").find(Condition.text("Pineapple Dreams")).shouldHave(Condition.text("Pineapple Dreams"));
-        $(".MenuItem-module__toggle___iTf9H").shouldHave(Condition.href("/en/cyp/limassol/restaurant/the-smuggers/pineapple-dreams-itemid-635f6b8bc76974bc0607abef"));
+        step.searchFieldSetValue("Pineapple Dreams")
+                .checkFoundItemSection("CHICKEN BURGERS")
+                .checkFoundItemCard("Pineapple Dreams");
+        api.status200Check("https://wolt.com/en/cyp/limassol/restaurant/the-smuggers/pineapple-dreams-itemid-635f6b8bc76974bc0607abef");
     }
 }
