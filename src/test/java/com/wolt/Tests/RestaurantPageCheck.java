@@ -70,22 +70,22 @@ public class RestaurantPageCheck extends Base3 {
 
     @Test
     void openDessertsSection() {
-        step.openDessertCategory("DESSERTS")
-                .dessertItem("Milk Chocolate Cookie", "€4.00")
+        step.openCategory("DESSERTS")
+                .openedItemCheck("Milk Chocolate Cookie", "€4.00")
                 .dessertItemCardHref("/en/cyp/limassol/restaurant/the-smuggers/milk-chocolate-cookie-itemid-638f18a4512bb58766b10e83");
         api.status200Check("https://wolt.com/en/cyp/limassol/restaurant/the-smuggers/milk-chocolate-cookie-itemid-638f18a4512bb58766b10e83");
-        step.dessertItem("Pistachio Cookie", "€4.50")
+        step.openedItemCheck("Pistachio Cookie", "€4.50")
                 .dessertItemCardHref("/en/cyp/limassol/restaurant/the-smuggers/pistachio-cookie-itemid-638f18b4d454e9f4bdbc7d94");
         api.status200Check("https://wolt.com/en/cyp/limassol/restaurant/the-smuggers/pistachio-cookie-itemid-638f18b4d454e9f4bdbc7d94");
-        step.dessertItem("Halva Brownie", "€4.50")
+        step.openedItemCheck("Halva Brownie", "€4.50")
                 .dessertItemCardHref("/en/cyp/limassol/restaurant/the-smuggers/halva-brownie-itemid-638f18c0d786bf1cf72f49c7");
         api.status200Check("https://wolt.com/en/cyp/limassol/restaurant/the-smuggers/halva-brownie-itemid-638f18c0d786bf1cf72f49c7");
     }
 
     @Test
     void productOpenCheck() {
-        step.openDessertCategory("DESSERTS")
-                .openDessertItemCard("Milk Chocolate Cookie")
+        step.openCategory("DESSERTS")
+                .openItemCard("Milk Chocolate Cookie", "€4.00")
                 .openedDessertItemCardContents("Milk Chocolate Cookie", "€4.00")
                 .defaultCounterValueAtItemCard("1")
                 .submitButtonItemCard("€4.00")

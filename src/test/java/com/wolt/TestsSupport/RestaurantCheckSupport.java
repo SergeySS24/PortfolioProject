@@ -110,14 +110,14 @@ public class RestaurantCheckSupport {
     }
 
     @Step ("Open 'Dessert' category and check that opened 'Dessert' category")
-    public RestaurantCheckSupport openDessertCategory(String item) {
+    public RestaurantCheckSupport openCategory(String item) {
         $$(".Categories-module__categoryLink___WM_5v").find(Condition.text(item)).shouldHave(Condition.text(item)).click();
         $$(".MenuCategoryHeader__Heading-sc-1enduc0-0").find(Condition.text(item)).shouldHave(Condition.text(item)).shouldBe(Condition.visible);
         return this;
     }
 
     @Step ("Verifying item in the selected section")
-    public RestaurantCheckSupport dessertItem(String item, String price) {
+    public RestaurantCheckSupport openedItemCheck(String item, String price) {
         $$(".MenuItem-module__itemContainer____1T8k").find(Condition.text(item))
                 .shouldHave(Condition.text(item)).shouldHave(Condition.text(price)).shouldBe(Condition.visible);
         return this;
@@ -131,9 +131,9 @@ public class RestaurantCheckSupport {
     }
 
     @Step ("Open selected item into a separate card")
-    public RestaurantCheckSupport openDessertItemCard(String item) {
+    public RestaurantCheckSupport openItemCard(String item, String price) {
         $$(".MenuItem-module__itemContainer____1T8k").find(Condition.text(item))
-                .shouldHave(Condition.text(item)).shouldHave(Condition.text("€4.00")).click();
+                .shouldHave(Condition.text(item)).shouldHave(Condition.text(price)).click();
         return this;
     }
 
