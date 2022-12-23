@@ -3,6 +3,7 @@ package com.wolt.Tests;
 import com.wolt.TestsSupport.Base;
 import com.wolt.TestsSupport.Cities2;
 import com.wolt.TestsSupport.MainPageSupport;
+import com.wolt.TestsSupport.OtherSupport;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.EnumSource;
@@ -15,11 +16,12 @@ import static com.codeborne.selenide.WebDriverConditions.url;
 public class MainPageCheck extends Base {
 
     MainPageSupport step = new MainPageSupport();
+    OtherSupport api = new OtherSupport();
 
     @Test
     void woltLogoClick() {
-        step.logoClick()
-                .status200Link("https://wolt.com/en/discovery");
+        step.logoClick();
+                api.status200Check("https://wolt.com/en/discovery");
         webdriver().shouldHave(url("https://wolt.com/en/discovery"));
     }
 
@@ -115,8 +117,8 @@ public class MainPageCheck extends Base {
                 .interactiveModuleText("Get the Apple-awarded Wolt app and choose from 40,000")
                 .interactiveModuleAppleStoreLink()
                 .interactiveModuleGooglePlayLink()
-                .interactiveModuleBackground()
-                .status200Link("https://consumer-static-assets.wolt.com/frontpage-assets/front-cells.png");
+                .interactiveModuleBackground();
+                api.status200Check("https://consumer-static-assets.wolt.com/frontpage-assets/front-cells.png");
     }
 
     @Test
@@ -125,8 +127,8 @@ public class MainPageCheck extends Base {
                 .suggestionSectionHeading("Hungry for more than food?")
                 .suggestionSection1Text("Get paid as a courier partner")
                 .suggestionSection1ApplyNow("Apply now")
-                .suggestionSection1ApplyLink("https://explore.wolt.com/en/cyp/couriers")
-                .status200Link("https://explore.wolt.com/en/cyp/couriers");
+                .suggestionSection1ApplyLink("https://explore.wolt.com/en/cyp/couriers");
+                api.status200Check("https://explore.wolt.com/en/cyp/couriers");
     }
 
     @Test
@@ -134,8 +136,8 @@ public class MainPageCheck extends Base {
         step.suggestionSectionScroll()
                 .suggestionSection2Text("Serve more people as a restaurant partner")
                 .suggestionSection2ApplyNow("Apply now")
-                .suggestionSection2ApplyLink("/en/merchants")
-                .status200Link("https://wolt.com/en/merchants");
+                .suggestionSection2ApplyLink("/en/merchants");
+                api.status200Check("https://wolt.com/en/merchants");
     }
 
     @Test
@@ -143,8 +145,8 @@ public class MainPageCheck extends Base {
         step.suggestionSectionScroll()
                 .suggestionSection3Text("Enter a new chapter and find a job at Wolt")
                 .suggestionSection3ApplyNow("Apply now")
-                .suggestionSection3ApplyLink("https://careers.wolt.com")
-                .status200Link("https://careers.wolt.com/en");
+                .suggestionSection3ApplyLink("https://careers.wolt.com");
+                api.status200Check("https://careers.wolt.com/en");
     }
 
     @Test
@@ -183,15 +185,14 @@ public class MainPageCheck extends Base {
     void firstFooterColumnLinkCheck() {
         step.footerScroll()
                 .forCountriesLinkCheck("https://explore.wolt.com/en/cyp/couriers")
-                .status200Link("https://explore.wolt.com/en/cyp/couriers")
                 .forRestaurantsLinkCheck("/en/merchants")
-                .status200Link("https://wolt.com/en/merchants")
                 .forStoresLinkCheck("/en/retailers")
-                .status200Link("https://wolt.com/en/retailers")
                 .forCompaniesLinkCheck("/en/wolt-at-work")
-                .status200Link("https://wolt.com/en/wolt-at-work")
-                .woltDriveLinkCheck("/en/drive")
-                .status200Link("https://wolt.com/en/drive");
+                .woltDriveLinkCheck("/en/drive");
+                api.status200Check("https://explore.wolt.com/en/cyp/couriers")
+                .status200Check("https://wolt.com/en/retailers")
+                .status200Check("https://wolt.com/en/wolt-at-work")
+                .status200Check("https://wolt.com/en/drive");
     }
 
 

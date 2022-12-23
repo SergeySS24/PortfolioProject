@@ -11,15 +11,6 @@ import static io.restassured.RestAssured.given;
 
 public class MainPageSupport {
 
-    @Step ("Check that API request to the selected link returns code 200")
-    public MainPageSupport status200Link(String link) {
-        given()
-                .get(link)
-                .then()
-                .statusCode(200);
-        return this;
-    }
-
     @Step ("Click on 'Wolt' logo")
     public MainPageSupport logoClick() {
         $(".MainHeader__LogoLink-sc-5qxwnz-2").click();

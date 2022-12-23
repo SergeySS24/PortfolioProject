@@ -2,102 +2,72 @@ package com.wolt.Tests;
 
 import com.codeborne.selenide.Condition;
 import com.wolt.TestsSupport.Base3;
+import com.wolt.TestsSupport.OtherSupport;
+import com.wolt.TestsSupport.RestaurantCheckSupport;
 import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.Selenide.*;
 
 public class RestaurantPageCheck extends Base3 {
 
+    RestaurantCheckSupport step = new RestaurantCheckSupport();
+    OtherSupport api = new OtherSupport();
 
     @Test
     void restaurantOpenTimeCheck() {
-        $(".OpeningHoursSnackbar__VenueInformationButton-sc-15xvzc-0").shouldHave(Condition.text("Open today:"));
+        step.openingHours("Open today:");
     }
-
 
     @Test
     void restaurantMainInformationCheck() {
-        $(".OpeningHoursSnackbar__StyledCaret-sc-15xvzc-2").shouldBe(Condition.visible);
-        $(".OpeningHoursSnackbar__StyledCaret-sc-15xvzc-2").click();
-        $(".leaflet-interactive").shouldHave(Condition.attribute("d",
-                "M116 182L118 153L121 145L169 136L193 119L298 78L341 78L396 98L409 98L422 123L428 144L414 144L367 157L229 326L136 194z")); // map check
-        $(".VenueBaseInformation__VenueLargeHeader-sc-13ahrno-2").shouldHave(Condition.text("The Smuggers")); //Restaurant name check
-        $(".VenueBaseInformation__VenueDescription-sc-13ahrno-6").shouldHave(Condition.text("It brings the smug in you!"));
-        $(".VenueLocationInformation__VenueSmallHeader-sc-qwdnoj-1").shouldHave(Condition.text("Address"));
-        $(".VenueLocationInformation__VenueAddress-sc-qwdnoj-2").shouldHave(Condition.text("Platonos 7"));
-        $(".VenueOpeningInformation__VenueSmallHeader-sc-9288mn-1").shouldHave(Condition.text("Opening times"));
-        $$(".ModalCardPage__ScrollContainer-sc-79y6nv-4").findBy(Condition.text("Monday-Sunday"))
-                .shouldHave(Condition.text("Monday-Sunday"));
-        $$(".VenueLocationInformation__Root-sc-qwdnoj-0").find(Condition.text("See map"))
-                .shouldHave(Condition.text("See map"));
-        $$(".VenueOpeningInformation__Root-sc-9288mn-0").find(Condition.text("Opening times"))
-                .shouldHave(Condition.text("Opening times"));
-        $$(".VenueOpeningInformation__Root-sc-9288mn-0").find(Condition.text("Monday-Sunday"))
-                .shouldHave(Condition.text("Monday-Sunday"));
-        $$(".VenueOpeningInformation__Root-sc-9288mn-0").find(Condition.text("12.00–23.30"))
-                .shouldHave(Condition.text("12.00–23.30"));
-        $$(".CombinedHours__Day-sc-189qmtd-0").find(Condition.text("Monday-Sunday"))
-                .shouldHave(Condition.text("Monday-Sunday"));
-        $$(".CombinedHours__HoursItem-sc-189qmtd-3").find(Condition.text("12.00–23.30"))
-                .shouldHave(Condition.text("12.00–23.30"));
+        step.informationCardClick()
+                .informationCardMapCheck()
+                .informationCardRestInfo("The Smuggers", "It brings the smug in you!")
+                .informationCardAddress("Address", "Platonos 7", "See map");
+        api.status200Check("https://www.google.com/maps?q=34.685806855152364,33.04388570674683");
+        step.informationCardOpeningTimes("Opening times", "Monday-Sunday");
     }
-
 
     @Test
     void restaurantBannerCheck() {
-        $(".VenueHeroBanner__TitleSpan-sc-3gkm9v-2").shouldHave(Condition.text("The Smuggers"));
-        $(".VenueHeroBanner__Description-sc-3gkm9v-4").shouldHave(Condition.text("It brings the smug in you!"));
+        step.restaurantName("The Smuggers", "It brings the smug in you!");
     }
-
-
-    @Test
-    void deliveryPriceCheck() {
-        $(".Tag__Root-sc-1pndqvl-0").shouldHave(Condition.text("Delivery: ")).shouldHave(Condition.text("€1.35"));
-    }
-
 
     @Test
     void minOrderCheck() {
-        $(".Tag__Root-sc-1pndqvl-0", 1).shouldHave(Condition.text("Min. order: ")).shouldHave(Condition.text("€6.00"));
+        step.minimumOrderCheck( "€6.00");
     }
-
 
     @Test
     void backgroundImageCheck() {
-        $$(".VenueBackground-module__image___o1lTk").find(Condition.attribute("src",
-                "https://imageproxy.wolt.com/venue/61dd470f2affdb8333e7278d/ea63213c-5b78-11ed-ba7c-2a44cd244fb3_image_6483441.jpg"))
-                .shouldHave(Condition.attribute("src",
-                        "https://imageproxy.wolt.com/venue/61dd470f2affdb8333e7278d/ea63213c-5b78-11ed-ba7c-2a44cd244fb3_image_6483441.jpg"));
+        step.backgroundImage();
     }
-
 
     @Test
     void ratingScoreCheck() {
-        $(".RatingsButton-module__score___fTqMn").shouldHave(Condition.text("9.2"));
+        step.averageScore("9.2");
     }
-
 
     @Test
     void favoriteButtonCheck() {
-        $(".FavoriteButton-module__button___WF8rF").shouldHave(Condition.text("Favorite"));
+        step.favoriteButton("Favorite");
     }
-
 
     @Test
-    void searchFieldnCheck() {
-        $(".SearchField-module__input___fS6Zk").shouldHave(Condition.attribute("placeholder", "Search"));
+    void searchFieldCheck() {
+        step.searchFieldPlaceholder("Search");
     }
-
 
     @Test
     void topCategoryCheck() {
-    $(".Categories-module__listItem___RjQkC").shouldHave(Condition.text("CHRISTMAS SPECIAL"));
+        step.topCategory("CHRISTMAS SPECIAL");
     }
-
 
     @Test
     void categoryCheck() {
-        $$(".Categories-module__root___qegos").find(Condition.text("WRAPS")).shouldHave(Condition.text("WRAPS"));
+        step.itemCheck("WRAPS");
+
+        //$$(".Categories-module__root___qegos").find(Condition.text("WRAPS")).shouldHave(Condition.text("WRAPS"));
     }
 
 
