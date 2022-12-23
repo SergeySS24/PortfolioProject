@@ -65,54 +65,40 @@ public class RestaurantPageCheck extends Base3 {
 
     @Test
     void categoryCheck() {
-        step.itemCheck("WRAPS");
-
-        //$$(".Categories-module__root___qegos").find(Condition.text("WRAPS")).shouldHave(Condition.text("WRAPS"));
+        step.listItemCheck("WRAPS");
     }
 
 
     @Test
     void openDessertsSection() {
-        $$(".Categories-module__categoryLink___WM_5v").find(Condition.text("DESSERTS")).shouldHave(Condition.text("DESSERTS")).click();
-        $$(".MenuCategoryHeader__Heading-sc-1enduc0-0").find(Condition.text("DESSERTS")).shouldHave(Condition.text("DESSERTS")).shouldBe(Condition.visible);
-        $$(".MenuItem-module__itemContainer____1T8k").find(Condition.text("Milk Chocolate Cookie"))
-                .shouldHave(Condition.text("Milk Chocolate Cookie")).shouldHave(Condition.text("€4.00")).shouldBe(Condition.visible);
-        $$(".MenuItem-module__toggle___iTf9H")
-                .find(Condition.href("/en/cyp/limassol/restaurant/the-smuggers/milk-chocolate-cookie-itemid-638f18a4512bb58766b10e83"))
-                .shouldHave(Condition.href("/en/cyp/limassol/restaurant/the-smuggers/milk-chocolate-cookie-itemid-638f18a4512bb58766b10e83"));
-        $$(".MenuItem-module__itemContainer____1T8k").find(Condition.text("Pistachio Cookie"))
-                .shouldHave(Condition.text("Pistachio Cookie")).shouldHave(Condition.text("€4.50")).shouldBe(Condition.visible);
-        $$(".MenuItem-module__toggle___iTf9H")
-                .find(Condition.href("/en/cyp/limassol/restaurant/the-smuggers/pistachio-cookie-itemid-638f18b4d454e9f4bdbc7d94"))
-                .shouldHave(Condition.href("/en/cyp/limassol/restaurant/the-smuggers/pistachio-cookie-itemid-638f18b4d454e9f4bdbc7d94"));
-        $$(".MenuItem-module__itemContainer____1T8k").find(Condition.text("Halva Brownie"))
-                .shouldHave(Condition.text("Halva Brownie")).shouldHave(Condition.text("€4.50")).shouldBe(Condition.visible);
-        $$(".MenuItem-module__toggle___iTf9H")
-                .find(Condition.href("/en/cyp/limassol/restaurant/the-smuggers/halva-brownie-itemid-638f18c0d786bf1cf72f49c7"))
-                .shouldHave(Condition.href("/en/cyp/limassol/restaurant/the-smuggers/halva-brownie-itemid-638f18c0d786bf1cf72f49c7"));
+        step.openDessertCategory("DESSERTS")
+                .dessertItem("Milk Chocolate Cookie", "€4.00")
+                .dessertItemCardHref("/en/cyp/limassol/restaurant/the-smuggers/milk-chocolate-cookie-itemid-638f18a4512bb58766b10e83");
+        api.status200Check("https://wolt.com/en/cyp/limassol/restaurant/the-smuggers/milk-chocolate-cookie-itemid-638f18a4512bb58766b10e83");
+        step.dessertItem("Pistachio Cookie", "€4.50")
+                .dessertItemCardHref("/en/cyp/limassol/restaurant/the-smuggers/pistachio-cookie-itemid-638f18b4d454e9f4bdbc7d94");
+        api.status200Check("https://wolt.com/en/cyp/limassol/restaurant/the-smuggers/pistachio-cookie-itemid-638f18b4d454e9f4bdbc7d94");
+        step.dessertItem("Halva Brownie", "€4.50")
+                .dessertItemCardHref("/en/cyp/limassol/restaurant/the-smuggers/halva-brownie-itemid-638f18c0d786bf1cf72f49c7");
+        api.status200Check("https://wolt.com/en/cyp/limassol/restaurant/the-smuggers/halva-brownie-itemid-638f18c0d786bf1cf72f49c7");
     }
 
 
     @Test
     void productOpenCheck() {
-        $$(".Categories-module__categoryLink___WM_5v").find(Condition.text("DESSERTS")).shouldHave(Condition.text("DESSERTS")).click();
-        $$(".MenuCategoryHeader__Heading-sc-1enduc0-0").find(Condition.text("DESSERTS")).shouldHave(Condition.text("DESSERTS")).shouldBe(Condition.visible);
-        $$(".MenuItem-module__itemContainer____1T8k").find(Condition.text("Milk Chocolate Cookie"))
-                .shouldHave(Condition.text("Milk Chocolate Cookie")).shouldHave(Condition.text("€4.00")).click();
-        $(".ProductViewScreen__PaddedItem-sc-1pnst4x-1").shouldHave(Condition.text("Milk Chocolate Cookie"));
-        $(".UnitAndPriceInfo__OriginalPrice-sc-1t66qe7-7").shouldHave(Condition.text("€4.00"));
-        $(".ModalNavigationButton__Content-sc-1x1lz0u-1").shouldHave(Condition.text("Product info"));
-        $$(".Stepper__VisibleInput-sc-ho8tch-1").find(Condition.text("1")).shouldHave(Condition.text("1"));
-        $$(".ProductViewFooter__SubmitButtonContent-sc-34t03j-5").find(Condition.text("Add to order")).shouldHave(Condition.text("Add to order"));
-        $$(".ProductViewFooter__Price-sc-34t03j-6").find(Condition.text("€4.00")).shouldHave(Condition.text("€4.00"));
-        $(".ModalNavigationButton__Content-sc-1x1lz0u-1").shouldHave(Condition.text("Product info")).click();
-        $$(".Modal__Container-sc-mw6f31-2").find(Condition.text("Product info")).shouldHave(Condition.text("Product info"));
-        $$(".Modal__Container-sc-mw6f31-2").find(Condition.text("Milk Chocolate Cookie")).shouldHave(Condition.text("Milk Chocolate Cookie"));
+        step.openDessertCategory("DESSERTS")
+                .openDessertItemCard("Milk Chocolate Cookie")
+                .openedDessertItemCardContents("Milk Chocolate Cookie", "€4.00")
+                .defaultCounterValueAtItemCard("1")
+                .submitButtonItemCard("€4.00")
+                .productInfoContents("Milk Chocolate Cookie");
     }
 
 
     @Test
     void restaurantInformation() {
+
+
         $$(".VenueSideInfo__Root-sc-1bpnd7a-0").find(Condition.text("Restaurant information"))
                 .shouldHave(Condition.text("Restaurant information"));
         $$(".VenueSideInfo__SectionTitle-sc-1bpnd7a-3").find(Condition.text("Address"))

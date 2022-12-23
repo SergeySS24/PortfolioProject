@@ -104,13 +104,67 @@ public class RestaurantCheckSupport {
     }
 
     @Step ("Checking 'WRAPS' item in the list of items")
-    public RestaurantCheckSupport itemCheck(String item) {
+    public RestaurantCheckSupport listItemCheck(String item) {
         $$(".Categories-module__root___qegos").find(Condition.text("WRAPS")).shouldHave(Condition.text(item));
         return this;
     }
 
+    @Step ("Open 'Dessert' category and check that opened 'Dessert' category")
+    public RestaurantCheckSupport openDessertCategory(String item) {
+        $$(".Categories-module__categoryLink___WM_5v").find(Condition.text(item)).shouldHave(Condition.text(item)).click();
+        $$(".MenuCategoryHeader__Heading-sc-1enduc0-0").find(Condition.text(item)).shouldHave(Condition.text(item)).shouldBe(Condition.visible);
+        return this;
+    }
 
+    @Step ("Verifying item in the selected section")
+    public RestaurantCheckSupport dessertItem(String item, String price) {
+        $$(".MenuItem-module__itemContainer____1T8k").find(Condition.text(item))
+                .shouldHave(Condition.text(item)).shouldHave(Condition.text(price)).shouldBe(Condition.visible);
+        return this;
+    }
 
+    @Step ("Selected item has href")
+    public RestaurantCheckSupport dessertItemCardHref(String href) {
+        $$(".MenuItem-module__toggle___iTf9H")
+                .find(Condition.href(href)).shouldHave(Condition.href(href));
+        return this;
+    }
+
+    @Step ("Open selected item into a separate card")
+    public RestaurantCheckSupport openDessertItemCard(String item) {
+        $$(".MenuItem-module__itemContainer____1T8k").find(Condition.text(item))
+                .shouldHave(Condition.text(item)).shouldHave(Condition.text("€4.00")).click();
+        return this;
+    }
+
+    @Step ("Check contents of the selected item card")
+    public RestaurantCheckSupport openedDessertItemCardContents(String item, String price) {
+        $(".ProductViewScreen__PaddedItem-sc-1pnst4x-1").shouldHave(Condition.text(item));
+        $(".UnitAndPriceInfo__OriginalPrice-sc-1t66qe7-7").shouldHave(Condition.text(price));
+        return this;
+    }
+
+    @Step ("Default value of the selected items")
+    public RestaurantCheckSupport defaultCounterValueAtItemCard(String value) {
+        $(".ModalNavigationButton__Content-sc-1x1lz0u-1").shouldHave(Condition.text("Product info"));
+        $$(".Stepper__VisibleInput-sc-ho8tch-1").find(Condition.text("1")).shouldHave(Condition.text(value));
+        return this;
+    }
+
+    @Step ("Submit button for the opened Item Card")
+    public RestaurantCheckSupport submitButtonItemCard(String value) {
+        $$(".ProductViewFooter__SubmitButtonContent-sc-34t03j-5").find(Condition.text("Add to order")).shouldHave(Condition.text("Add to order"));
+        $$(".ProductViewFooter__Price-sc-34t03j-6").find(Condition.text("€4.00")).shouldHave(Condition.text(value));
+        return this;
+    }
+
+    @Step ("Contents of the product info")
+    public RestaurantCheckSupport productInfoContents(String item) {
+        $(".ModalNavigationButton__Content-sc-1x1lz0u-1").shouldHave(Condition.text("Product info")).click();
+        $$(".Modal__Container-sc-mw6f31-2").find(Condition.text("Product info")).shouldHave(Condition.text("Product info"));
+        $$(".Modal__Container-sc-mw6f31-2").find(Condition.text(item)).shouldHave(Condition.text(item));
+        return this;
+    }
 
 
 
