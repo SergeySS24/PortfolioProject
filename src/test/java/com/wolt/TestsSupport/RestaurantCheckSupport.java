@@ -199,12 +199,7 @@ public class RestaurantCheckSupport {
         $(".MenuItem-module__toggle___iTf9H").shouldHave(Condition.href("/en/cyp/limassol/restaurant/the-smuggers/pineapple-dreams-itemid-635f6b8bc76974bc0607abef"));
         return this;
     }
-
-
-
-
-
-    }
+}
 
 
 

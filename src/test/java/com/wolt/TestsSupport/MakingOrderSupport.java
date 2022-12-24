@@ -63,13 +63,5 @@ public class MakingOrderSupport {
         $(".Stepper__QuantityBubble-sc-ho8tch-8").shouldHave(Condition.text(value));
         return this;
     }
-
-
-
-
-
-
-
-
 }
 
