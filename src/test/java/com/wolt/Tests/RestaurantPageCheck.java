@@ -1,12 +1,9 @@
 package com.wolt.Tests;
 
-import com.codeborne.selenide.Condition;
-import com.wolt.TestsSupport.Base3;
-import com.wolt.TestsSupport.OtherSupport;
-import com.wolt.TestsSupport.RestaurantCheckSupport;
+import com.wolt.TestsSupport.TestsBase.Base3;
+import com.wolt.TestsSupport.TestsSupport.OtherSupport;
+import com.wolt.TestsSupport.TestsSupport.RestaurantCheckSupport;
 import org.junit.jupiter.api.Test;
-
-import static com.codeborne.selenide.Selenide.*;
 
 public class RestaurantPageCheck extends Base3 {
 

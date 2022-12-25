@@ -1,9 +1,8 @@
 package com.wolt.Tests;
 
-import com.codeborne.selenide.Condition;
-import com.wolt.TestsSupport.Base3;
-import com.wolt.TestsSupport.MakingOrderSupport;
-import com.wolt.TestsSupport.RestaurantCheckSupport;
+import com.wolt.TestsSupport.TestsBase.Base3;
+import com.wolt.TestsSupport.TestsSupport.MakingOrderSupport;
+import com.wolt.TestsSupport.TestsSupport.RestaurantCheckSupport;
 import org.junit.jupiter.api.Test;
 
 

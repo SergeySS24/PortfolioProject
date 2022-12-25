@@ -1,4 +1,4 @@
-package com.wolt.TestsSupport;
+package com.wolt.TestsSupport.UnumSupport;
 
 public enum Cities2 {
     CITY1("Ammochostos"),

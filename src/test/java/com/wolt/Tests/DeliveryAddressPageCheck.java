@@ -1,10 +1,8 @@
 package com.wolt.Tests;
 
-import com.codeborne.selenide.Condition;
-import com.wolt.TestsSupport.Base2;
-import com.wolt.TestsSupport.DeliveryAddressPageSupport;
-import com.wolt.TestsSupport.MainPageSupport;
-import com.wolt.TestsSupport.OtherSupport;
+import com.wolt.TestsSupport.TestsBase.Base2;
+import com.wolt.TestsSupport.TestsSupport.DeliveryAddressPageSupport;
+import com.wolt.TestsSupport.TestsSupport.OtherSupport;
 import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.Selenide.$;

@@ -1,10 +1,9 @@
 package com.wolt.Tests;
 
-import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Selenide;
 import com.github.javafaker.Faker;
-import com.wolt.TestsSupport.AuthorizationPopupSupport;
-import com.wolt.TestsSupport.Base;
+import com.wolt.TestsSupport.TestsSupport.AuthorizationPopupSupport;
+import com.wolt.TestsSupport.TestsBase.Base;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 

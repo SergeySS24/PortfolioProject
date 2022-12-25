@@ -1,4 +1,4 @@
-package com.wolt.TestsSupport;
+package com.wolt.TestsSupport.TestsBase;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Configuration;

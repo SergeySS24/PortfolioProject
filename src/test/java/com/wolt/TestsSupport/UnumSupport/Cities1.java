@@ -1,4 +1,4 @@
-package com.wolt.TestsSupport;
+package com.wolt.TestsSupport.UnumSupport;
 
 import java.util.HashMap;
 

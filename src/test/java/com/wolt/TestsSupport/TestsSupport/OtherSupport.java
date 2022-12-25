@@ -1,4 +1,4 @@
-package com.wolt.TestsSupport;
+package com.wolt.TestsSupport.TestsSupport;
 
 import io.qameta.allure.Step;
 

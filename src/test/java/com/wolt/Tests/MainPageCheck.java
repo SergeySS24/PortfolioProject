@@ -1,9 +1,9 @@
 package com.wolt.Tests;
 
-import com.wolt.TestsSupport.Base;
-import com.wolt.TestsSupport.Cities2;
-import com.wolt.TestsSupport.MainPageSupport;
-import com.wolt.TestsSupport.OtherSupport;
+import com.wolt.TestsSupport.TestsBase.Base;
+import com.wolt.TestsSupport.UnumSupport.Cities2;
+import com.wolt.TestsSupport.TestsSupport.MainPageSupport;
+import com.wolt.TestsSupport.TestsSupport.OtherSupport;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.EnumSource;
