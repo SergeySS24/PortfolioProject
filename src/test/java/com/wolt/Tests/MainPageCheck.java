@@ -1,5 +1,6 @@
 package com.wolt.Tests;
 
+import com.codeborne.selenide.Selenide;
 import com.wolt.TestsSupport.TestsBase.Base;
 import com.wolt.TestsSupport.UnumSupport.Cities2;
 import com.wolt.TestsSupport.TestsSupport.MainPageSupport;
@@ -263,6 +264,11 @@ public class MainPageCheck extends Base {
     void bottomStamp() {
         step.footerScroll()
                 .bottomStamp("©️ Wolt 2014–2022");
+    }
+
+    @AfterEach
+    public void finish() {
+        Selenide.closeWindow();
     }
 }
 

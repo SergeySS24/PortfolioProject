@@ -2,6 +2,7 @@ package com.wolt.Tests;
 
 import com.codeborne.selenide.Selenide;
 import com.github.javafaker.Faker;
+import com.wolt.TestsSupport.TestsBase.Base4;
 import com.wolt.TestsSupport.TestsSupport.AuthorizationPopupSupport;
 import com.wolt.TestsSupport.TestsBase.Base;
 import org.junit.jupiter.api.AfterEach;
@@ -9,7 +10,7 @@ import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.Selenide.*;
 
-public class AuthorizationPopupCheck extends Base {
+public class AuthorizationPopupCheck extends Base4 {
 
     Faker faker = new Faker();
 

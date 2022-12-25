@@ -1,18 +1,15 @@
 package com.wolt.TestsSupport.TestsBase;
 
-import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Configuration;
 import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 
-public class Base {
+public class Base4 {
 
-    @BeforeEach
-     void setUp() {
+    @BeforeAll
+    static void setUp() {
         Configuration.holdBrowserOpen = true;
         Configuration.browserSize = "1920x1080";
 

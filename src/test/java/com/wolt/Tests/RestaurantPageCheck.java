@@ -1,8 +1,10 @@
 package com.wolt.Tests;
 
+import com.codeborne.selenide.Selenide;
 import com.wolt.TestsSupport.TestsBase.Base3;
 import com.wolt.TestsSupport.TestsSupport.OtherSupport;
 import com.wolt.TestsSupport.TestsSupport.RestaurantCheckSupport;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 
 public class RestaurantPageCheck extends Base3 {
@@ -101,4 +103,11 @@ public class RestaurantPageCheck extends Base3 {
                 .checkFoundItemCard("Pineapple Dreams");
         api.status200Check("https://wolt.com/en/cyp/limassol/restaurant/the-smuggers/pineapple-dreams-itemid-635f6b8bc76974bc0607abef");
     }
+
+    @AfterEach
+    public void finish() {
+        Selenide.closeWindow();
+    }
+
 }
+

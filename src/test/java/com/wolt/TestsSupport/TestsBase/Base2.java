@@ -3,6 +3,7 @@ package com.wolt.TestsSupport.TestsBase;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Configuration;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.Selenide.webdriver;
@@ -10,8 +11,8 @@ import static com.codeborne.selenide.WebDriverConditions.url;
 
 public class Base2 {
 
-    @BeforeAll
-    static void setUp() {
+    @BeforeEach
+    void setUp() {
         Configuration.holdBrowserOpen = true;
         Configuration.browserSize = "1920x1080";
 

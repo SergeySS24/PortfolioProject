@@ -1,8 +1,10 @@
 package com.wolt.Tests;
 
+import com.codeborne.selenide.Selenide;
 import com.wolt.TestsSupport.TestsBase.Base2;
 import com.wolt.TestsSupport.TestsSupport.DeliveryAddressPageSupport;
 import com.wolt.TestsSupport.TestsSupport.OtherSupport;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.Selenide.$;
@@ -58,7 +60,7 @@ public class DeliveryAddressPageCheck extends Base2 {
                 step.elementWithoutFilling("/en/discovery/stores");
     }
 
-    @Test //Warning: dynamic tile and may be removed
+    @Test //Warning: this is a dynamic tile and may be removed
     void unlimitedFreeDeliveriesTileCheck() {
         step.unlimitedDeliveriesTile();
     }
@@ -149,6 +151,8 @@ public class DeliveryAddressPageCheck extends Base2 {
                 .categoryTileEnlarge();
     }
 
-
-
+    @AfterEach
+    public void finish() {
+        Selenide.closeWindow();
+    }
 }
