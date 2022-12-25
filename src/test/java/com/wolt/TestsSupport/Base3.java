@@ -3,6 +3,7 @@ package com.wolt.TestsSupport;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Configuration;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.WebDriverConditions.url;
@@ -26,6 +27,6 @@ public class Base3 {
 
         $(".SearchInput__Input-sc-1web0kr-2").setValue("The Smuggers");
         $(".SearchResultItem__Info-sc-1paxeg7-3").click();
-    }
 
+    }
 }
