@@ -11,6 +11,12 @@ import static io.restassured.RestAssured.given;
 
 public class DeliveryAddressPageSupport {
 
+    @Step ("Verifying correct delivery address")
+    public DeliveryAddressPageSupport deliveryAddressCheck(String address) {
+        $(".AddressSelectButton__AddressText-sc-1blbr80-3").shouldHave(Condition.text(address));
+        return this;
+    }
+
     @Step ("Seach bar has placeholder text")
     public DeliveryAddressPageSupport searchBarPlaceholder(String placeholder) {
         $(".SearchInput__Input-sc-1web0kr-2")

@@ -16,6 +16,12 @@ public class DeliveryAddressPageCheck extends Base2 {
     DeliveryAddressPageSupport step = new DeliveryAddressPageSupport();
     OtherSupport api = new OtherSupport();
 
+
+    @Test
+    void deliveryAddressCheck() {
+        step.deliveryAddressCheck("28 October Avenue 353");
+    }
+
     @Test
     void topSearchBarCheck() {
         step.searchBarPlaceholder("Search in Wolt...");
