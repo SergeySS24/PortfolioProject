@@ -13,7 +13,7 @@ public class MakingOrder extends Base3 {
 
 
     @Test
-    void selectChickenBurger() {
+    void makingStandardOrder() {
         pace.openCategory("CHICKEN BURGERS")
                 .openItemCard("Salted Caramel Chicken", "€11.00");
         step.addExtraItem("bacon ")

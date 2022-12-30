@@ -4,7 +4,6 @@ import com.codeborne.selenide.Selenide;
 import com.github.javafaker.Faker;
 import com.wolt.TestsSupport.TestsBase.Base4;
 import com.wolt.TestsSupport.TestsSupport.AuthorizationPopupSupport;
-import com.wolt.TestsSupport.TestsBase.Base;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 

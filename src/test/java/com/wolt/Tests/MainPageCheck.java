@@ -39,7 +39,6 @@ public class MainPageCheck extends Base {
                 .nextButton();
      }
 
-
     @Test
     void signUpElementPresent() {
         step.authorizationSection("Sign up");
@@ -64,7 +63,6 @@ public class MainPageCheck extends Base {
         step.exploreCitiesHeading("Explore cities where you find Wolt")
                 .selectedCountrtDisplay("Cyprus");
     }
-
 
     @EnumSource(Cities2.class)
     @ParameterizedTest(name = "Checking all cities on the main page")
@@ -157,14 +155,12 @@ public class MainPageCheck extends Base {
                 .footerAppleStoreIconTitle("Download the Wolt iOS app on the App Store");
     }
 
-
     @Test
     void footerGooglePlayCheck() {
         step.footerScroll()
                 .footerGooglePlayIcon()
                 .footerGooglePlayIconTitle("Download the Wolt Android app on Google Play");
     }
-
 
     //checking first footer column
     @ValueSource(strings = {
@@ -195,7 +191,6 @@ public class MainPageCheck extends Base {
                 .status200Check("https://wolt.com/en/wolt-at-work")
                 .status200Check("https://wolt.com/en/drive");
     }
-
 
     //checking second footer column
     @ValueSource(strings = {
@@ -228,7 +223,6 @@ public class MainPageCheck extends Base {
                 .footerThirdColumContent(testData);
     }
 
-
     //checking fourth footer column
     @ValueSource(strings = {
             "Wolt blog",
@@ -252,7 +246,6 @@ public class MainPageCheck extends Base {
         step.footerScroll()
                 .leftBottomBarElements("Cyprus", "English", "Accessibility");
     }
-
 
     @Test
     void bottomBarTwo() {
