@@ -1,5 +1,5 @@
 # PortfolioProject
-This repository contains my portfolio project intended to demonstrate my technical skills and expertise in the web automation 
+This repository contains my portfolio project intended to demonstrate my technical skills and expertise in the web automation. 
 
 Project based on Java. The following frameworks are applied:
 * Selenide 
