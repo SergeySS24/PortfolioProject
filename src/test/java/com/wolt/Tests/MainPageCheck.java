@@ -39,7 +39,6 @@ public class MainPageCheck extends Base {
                 .nextButton();
      }
 
-
     @Test
     void signUpElementPresent() {
         step.authorizationSection("Sign up");
@@ -64,7 +63,6 @@ public class MainPageCheck extends Base {
         step.exploreCitiesHeading("Explore cities where you find Wolt")
                 .selectedCountrtDisplay("Cyprus");
     }
-
 
     @EnumSource(Cities2.class)
     @ParameterizedTest(name = "Checking all cities on the main page")
