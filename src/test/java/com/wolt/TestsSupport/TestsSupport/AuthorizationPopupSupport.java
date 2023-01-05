@@ -8,6 +8,7 @@ import static com.codeborne.selenide.Selenide.$$;
 
 public class AuthorizationPopupSupport {
 
+
     @Step ("Click on 'Sign Up' button")
     public AuthorizationPopupSupport signUpButtonClick() {
         $(".Button__Content-sc-a3fg5q-3").click();

@@ -17,10 +17,14 @@ public class AuthorizationPopupCheck extends Base4 {
 
     AuthorizationPopupSupport step = new AuthorizationPopupSupport();
 
+
+    String log = "Create an account or log in";
+
+
     @Test
     void googleVerificationCheck() {
         step.signUpButtonClick()
-                .authorizationPopupHeader("Create an account or log in")
+                .authorizationPopupHeader(log)
                 .googleAuthorization("Continue with Google");
     }
 

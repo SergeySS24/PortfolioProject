@@ -7,8 +7,6 @@ import com.wolt.TestsSupport.TestsSupport.OtherSupport;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.$$;
 
 
 public class DeliveryAddressPageCheck extends Base2 {

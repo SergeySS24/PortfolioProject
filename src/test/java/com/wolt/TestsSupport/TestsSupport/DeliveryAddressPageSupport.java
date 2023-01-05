@@ -2,12 +2,10 @@ package com.wolt.TestsSupport.TestsSupport;
 
 import com.codeborne.selenide.CollectionCondition;
 import com.codeborne.selenide.Condition;
-import com.codeborne.selenide.Selenide;
 import io.qameta.allure.Step;
 
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
-import static io.restassured.RestAssured.given;
 
 public class DeliveryAddressPageSupport {
 
@@ -47,7 +45,6 @@ public class DeliveryAddressPageSupport {
 
     @Step ("SubNavigation section has the following elements")
     public DeliveryAddressPageSupport subNavigationSection(String text) {
-        Selenide.refresh();
         $$(".DesktopDiscoveryTabLink__Label-sc-1qoyay1-1").find(Condition.text(text)).shouldHave(Condition.text(text));
         return this;
     }
