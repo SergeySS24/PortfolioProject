@@ -14,8 +14,8 @@ public class Base4 {
         Configuration.browserSize = "1920x1080";
 
         open("https://wolt.com/en/cyp");
-        $(".ConsentsBanner__Root-sc-194d5oz-0").$(".Button__Root-sc-a3fg5q-2").click();
-        $(".Button-module__button___WpJP1").click();
+        $(".sc-3acf7193-0").$(".sc-eeff252-2").click();
+        $(".Lgs3k4").click();
     }
 
 }
