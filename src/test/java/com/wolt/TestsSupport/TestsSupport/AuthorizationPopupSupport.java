@@ -11,46 +11,43 @@ public class AuthorizationPopupSupport {
 
     @Step ("Click on 'Sign Up' button")
     public AuthorizationPopupSupport signUpButtonClick() {
-        $(".Button__Content-sc-a3fg5q-3").click();
+        $(".sc-eaf76a21-2 ").click();
         return this;
     }
 
     @Step ("Authorization popup is present")
     public AuthorizationPopupSupport authorizationPopupHeader(String header) {
-        $$(".AuthModal__ScreenWrapper-sc-1u3qek0-0").find(Condition.text(header))
+        $$(".sc-90dfde35-0").find(Condition.text(header))
                 .shouldHave(Condition.text(header));
         return this;
     }
 
     @Step ("Google authorization")
     public AuthorizationPopupSupport googleAuthorization(String authorization) {
-        $(".SocialLoginButton__Root-sc-m5y1u4-3").shouldHave(Condition.text(authorization));
-        $(".SocialLoginButton__Root-sc-m5y1u4-3").shouldHave(Condition.attribute("type", "button"));
+        $(".sc-8ec1ba62-1").shouldHave(Condition.text(authorization));
         return this;
     }
 
     @Step ("Apple authorization")
     public AuthorizationPopupSupport appleAuthorization(String authorization) {
-        $(".SocialLoginButton__Root-sc-m5y1u4-3", 1).shouldHave(Condition.text(authorization));
-        $(".SocialLoginButton__Root-sc-m5y1u4-3", 1).shouldHave(Condition.attribute("type", "button"));
+        $(".sc-8ec1ba62-1", 1).shouldHave(Condition.text(authorization));
         return this;
     }
 
     @Step ("Facebook authorization")
     public AuthorizationPopupSupport facebookAuthorization(String authorization) {
-        $(".SocialLoginButton__Root-sc-m5y1u4-3", 2).shouldHave(Condition.text(authorization));
-        $(".SocialLoginButton__Root-sc-m5y1u4-3", 2).shouldHave(Condition.attribute("type", "button"));
-        $$(".MethodSelect__SocialLoginStatus-sc-1bkm6bi-6").find(Condition.text("To log in with Facebook, please "))
+        $(".sc-8ec1ba62-1", 2).shouldHave(Condition.text(authorization));
+        $$(".sc-90dfde35-0").find(Condition.text("To log in with Facebook, please "))
                 .shouldHave(Condition.text("To log in with Facebook, please "));
-        $$(".MethodSelect__SocialLoginStatus-sc-1bkm6bi-6").find(Condition.text("accept marketing cookies"))
+        $$(".sc-90dfde35-0").find(Condition.text("accept marketing cookies"))
                 .shouldHave(Condition.text("accept marketing cookies"));
         return this;
     }
 
     @Step ("Email authorization")
     public AuthorizationPopupSupport emailAuthorization(String authorization) {
-        $(".MethodSelect__EmailOptionTitle-sc-1bkm6bi-7").shouldHave(Condition.text("or log in with email"));
-        $$(".Input__Label-sc-cy5jpp-4").find(Condition.text(authorization)).shouldHave(Condition.text(authorization));
+        $(".sc-90dfde35-0").shouldHave(Condition.text("or log in with email"));
+        $$(".sc-8b48855d-1").find(Condition.text(authorization)).shouldHave(Condition.text(authorization));
         return this;
     }
 
@@ -62,20 +59,20 @@ public class AuthorizationPopupSupport {
 
     @Step ("Click on 'Next' button")
     public AuthorizationPopupSupport nextButtonClick() {
-        $$(".AuthModal__ScreenWrapper-sc-1u3qek0-0").find(Condition.text("Next"))
+        $$(".sc-eeff252-2").find(Condition.text("Next"))
                 .shouldHave(Condition.text("Next")).click();
         return this;
     }
 
     @Step ("Error message 1")
     public AuthorizationPopupSupport errorMessage1(String error) {
-        $(".FieldErrorWrapper__ErrorMessage-sc-1s7mirc-0").shouldHave(Condition.text(error));
+        $(".sc-fd1b4e4d-0").shouldHave(Condition.text(error));
         return this;
     }
 
     @Step ("Error message 2")
     public AuthorizationPopupSupport errorMessage2(String error) {
-        $$(".Alert__Content-sc-kau7g8-12").find(Condition.text(error))
+        $$(".sc-c8c7f0b8-12").find(Condition.text(error))
                 .shouldHave(Condition.text(error));
         return this;
     }
@@ -88,23 +85,21 @@ public class AuthorizationPopupSupport {
 
     @Step ("'Sent email' popup header")
     public AuthorizationPopupSupport sentPopupEmailHeader(String header) {
-        $$(".AuthModal__ScreenWrapper-sc-1u3qek0-0").find(Condition.text(header))
+        $$(".sc-90dfde35-0").find(Condition.text(header))
                 .shouldHave(Condition.text(header));
         return this;
     }
 
     @Step ("'Sent email' popup resend button")
     public AuthorizationPopupSupport sentPopupEmailResendButton(String text) {
-        $$(".Button__Root-sc-a3fg5q-2").find(Condition.text(text))
+        $$(".sc-eeff252-3").find(Condition.text(text))
                 .shouldHave(Condition.text(text));
-        $$(".Button__Root-sc-a3fg5q-2").find(Condition.attribute("type", "button"))
-                .shouldHave(Condition.attribute("type", "button"));
         return this;
     }
 
     @Step ("'Sent email' popup information message")
     public AuthorizationPopupSupport sentPopupEmailInformationMessage(String email) {
-        $(".EmailSent__SubTitle-sc-1yz7xhb-2")
+        $(".sc-8065770a-2")
                 .shouldHave(Condition.text("We've just sent a sign-in link to " + email +". Please check your spam folder in case you didn't get the email."));
         return this;
     }
