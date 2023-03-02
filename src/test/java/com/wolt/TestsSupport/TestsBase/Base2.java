@@ -20,8 +20,8 @@ public class Base2 {
         $(".sc-3acf7193-0").$(".sc-eeff252-2").click();
         $(".Lgs3k4").click();
 
-        $(".Input__InputComponent-sc-cy5jpp-0").click();
-        $(".Input__InputComponent-sc-cy5jpp-0").setValue("353, 28th October Street");
+        $(".sc-8b48855d-0").click();
+        $(".sc-8b48855d-0").setValue("353, 28th October Street");
         $$(".Popover__Content-sc-mo27do-2").findBy(Condition.text("28th October Avenue 353")).shouldBe(Condition.visible).click();
         webdriver().shouldHave(url("https://wolt.com/en/discovery"));
         $(".AddressSelectButton__AddressText-sc-1blbr80-3").shouldHave(Condition.text("28 October Avenue 353"));
