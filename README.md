@@ -1,7 +1,7 @@
 # PortfolioProject
 This repository contains my portfolio project intended to demonstrate my technical skills and expertise in the web automation. 
 
-Project based on Java. The following frameworks are applied:
+The project is based on Java. The following frameworks and libraries are applied:
 * Selenide 
 * JUnit 5
 * Allure 
